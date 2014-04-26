@@ -1,0 +1,17 @@
+********** monster_pieces **********
+
+*****IMAGES
+          root_height       (768,)
+          background       (0,0)
+          hello       (166,205)
+          tentacle       (-95,-10)
+
+*****BUTTONS
+
+*****TEXT FIELDS
+          hello       (-484,345)
+                            COLOR: 0CFF00
+                             FONT: Arial-Black
+                    JUSTIFICATION: left
+                        FONT SIZE: 24
+                     DEFAULT TEXT: Hello World

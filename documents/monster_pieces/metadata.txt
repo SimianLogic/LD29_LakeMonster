@@ -1,0 +1,1 @@
+root_width|1024+root_height|768+background|0|0+text_hello|-484|345|0CFF00|Arial-Black|left|24|304|36|Hello World+hello|166|205+tentacle|-95|-10
