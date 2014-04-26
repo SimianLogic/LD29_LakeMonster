@@ -67,9 +67,9 @@ public class ScreenManager
 			backdrop = new FSprite(backdropSprite);
 			backdrop.scaleX = Futile.screen.width / backdrop.width;
 			backdrop.scaleY = Futile.screen.height / backdrop.height;
-			// NOTE: The following two lines recolor the backdrop sprite to the default 0xDFCD9D color.
+			// NOTE: The following two lines recolor the backdrop sprite
 			backdrop.shader = FShader.SolidColored;
-			backdrop.color = RXUtils.GetColorFromHex("dfcd9d");
+			backdrop.color = RXUtils.GetColorFromHex("555555");
 		}
 
 		screenLayer = new FContainer();

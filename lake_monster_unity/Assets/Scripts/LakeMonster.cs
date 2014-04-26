@@ -24,7 +24,7 @@ public class LakeMonster : MonoBehaviour
 //		Futile.atlasManager.LoadAtlases("Atlases/dtd_atlas");
 //		MetaContainer.loadFont("BarutaBlack",48,"barutablack_48","Atlases/barutablack_48",0f,0f);
 
-//		ScreenManager.init(this, "popup_backdrop");
+		ScreenManager.init(this, "");
 		
 //		AnimationManager.init(this);
 //		AnimationManager.loadAnimationSet("Animation/flump_test");
