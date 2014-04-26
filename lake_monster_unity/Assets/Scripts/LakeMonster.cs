@@ -8,7 +8,7 @@ using System.IO;
 
 public class LakeMonster : MonoBehaviour
 {
-	private FContainer screen;
+	private WillsLakeScreen lake;
 	
 	void Start()
 	{
@@ -28,11 +28,12 @@ public class LakeMonster : MonoBehaviour
 
 		ScreenManager.init(this, "");
 
-		LakeScreen lake = new LakeScreen();		
-		lake.y = lake.rootHeight/2 - Futile.screen.halfHeight - 500;
+		lake = new WillsLakeScreen();		
+//		lake.y = lake.rootHeight/2 - Futile.screen.halfHeight - 500;
+		lake.y = Futile.screen.halfHeight - lake.rootHeight/2;
 		ScreenManager.loadScreen(lake, ScreenSourceDirection.Instant);
 		
-		Go.to(lake, 5.0f, new TweenConfig().floatProp("y", Futile.screen.halfHeight - lake.rootHeight/2).setEaseType(EaseType.ExpoInOut).setDelay(0.1f));
+//		Go.to(lake, 5.0f, new TweenConfig().floatProp("y", Futile.screen.halfHeight - lake.rootHeight/2).setEaseType(EaseType.ExpoInOut).setDelay(0.1f));
 		
 		
 		
@@ -42,6 +43,11 @@ public class LakeMonster : MonoBehaviour
 //		CreepModel.LoadFromData("creeps");
 		
 		Debug.Log("HELLO WORLD");
+	}
+	
+	void Update()
+	{
+		lake.Update ();
 	}
 
 }
