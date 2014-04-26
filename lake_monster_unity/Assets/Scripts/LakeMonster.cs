@@ -14,17 +14,27 @@ public class LakeMonster : MonoBehaviour
 	{
 		FutileParams fparams = new FutileParams(true, true, false, false); //landscape left, right, portrait, portraitUpsideDown
 
-		fparams.AddResolutionLevel(768.0f, 1.0f, 1.0f, ""); //max height, displayScale, resourceScale, resourceSuffix
+		fparams.AddResolutionLevel(1024.0f, 1.0f, 1.0f, ""); //max width, displayScale, resourceScale, resourceSuffix
 		
 		fparams.backgroundColor = RXUtils.GetColorFromHex("555555");
 		fparams.origin = new Vector2(0.5f, 0.5f);
 		
 		Futile.instance.Init(fparams);
 		
-//		Futile.atlasManager.LoadAtlases("Atlases/dtd_atlas");
-//		MetaContainer.loadFont("BarutaBlack",48,"barutablack_48","Atlases/barutablack_48",0f,0f);
+		Futile.atlasManager.LoadAtlas("Atlases/lake_monster");
+		Futile.atlasManager.LogAllElementNames();
+		
+		MetaContainer.loadFont("Arial-Black",120,"arial_black_120","Atlases/arial_black_120",0f,0f);
 
 		ScreenManager.init(this, "");
+
+		LakeScreen lake = new LakeScreen();		
+		lake.y = lake.rootHeight/2 - Futile.screen.halfHeight - 500;
+		ScreenManager.loadScreen(lake, ScreenSourceDirection.Instant);
+		
+		Go.to(lake, 5.0f, new TweenConfig().floatProp("y", Futile.screen.halfHeight - lake.rootHeight/2).setEaseType(EaseType.ExpoInOut).setDelay(0.1f));
+		
+		
 		
 //		AnimationManager.init(this);
 //		AnimationManager.loadAnimationSet("Animation/flump_test");

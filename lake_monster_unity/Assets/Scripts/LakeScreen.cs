@@ -1,19 +1,12 @@
 using UnityEngine;
 using System.Collections;
 
-public class LakeScreen : MonoBehaviour
+public class LakeScreen : GameScreen
 {
 
-		// Use this for initialization
-		void Start ()
-		{
-	
-		}
-	
-		// Update is called once per frame
-		void Update ()
-		{
-	
-		}
+	public LakeScreen() : base("monster_pieces")
+	{
+		Debug.Log("I'M A LAKE");
+	}
 }
 
