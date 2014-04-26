@@ -72,6 +72,8 @@ public class MetaContainer : FContainer
 					return "_iphone5";
 				case("_iphone5_retina"):
 					return "_iphone5";
+				case(""):
+					return "";
 				default:
 					throw new FutileException("Unrecognized resource suffix!");
 			}
