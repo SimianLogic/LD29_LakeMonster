@@ -9,7 +9,8 @@ using System.IO;
 public class LakeMonster : MonoBehaviour
 {
 	private WillsLakeScreen lake;
-	
+	public LakeScreen lake;
+
 	void Start()
 	{
 		FutileParams fparams = new FutileParams(true, true, false, false); //landscape left, right, portrait, portraitUpsideDown
@@ -34,6 +35,7 @@ public class LakeMonster : MonoBehaviour
 		ScreenManager.loadScreen(lake, ScreenSourceDirection.Instant);
 		
 //		Go.to(lake, 5.0f, new TweenConfig().floatProp("y", Futile.screen.halfHeight - lake.rootHeight/2).setEaseType(EaseType.ExpoInOut).setDelay(0.1f));
+
 		
 		
 		
@@ -50,4 +52,8 @@ public class LakeMonster : MonoBehaviour
 		lake.Update ();
 	}
 
+	void Update()
+	{
+		lake.update ();
+	}
 }
