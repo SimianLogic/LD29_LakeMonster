@@ -1,15 +1,19 @@
 ********** monster_pieces **********
 
 *****IMAGES
-          root_height       (768,)
+          root_height       (2048,)
           background       (0,0)
-          hello       (166,205)
-          tentacle       (-95,-10)
+          hello       (166,845)
+          submarine       (360,653)
+          tentacle       (86,681)
+          boat       (-371,801)
+          person       (-431,837)
+          monster       (0,-486)
 
 *****BUTTONS
 
 *****TEXT FIELDS
-          hello       (-484,345)
+          hello       (-484,985)
                             COLOR: 0CFF00
                              FONT: Arial-Black
                     JUSTIFICATION: left

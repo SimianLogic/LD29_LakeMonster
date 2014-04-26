@@ -181,6 +181,10 @@
             <filename>monster_pieces/tentacle.png</filename>
             <filename>../fonts/arial_black_120.png</filename>
             <filename>monster_pieces/hello.png</filename>
+            <filename>monster_pieces/boat.png</filename>
+            <filename>monster_pieces/monster.png</filename>
+            <filename>monster_pieces/person.png</filename>
+            <filename>monster_pieces/submarine.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
