@@ -4,8 +4,9 @@ using System.Collections.Generic;
 
 public class WillsLakeScreen : GameScreen, FSingleTouchableInterface
 {
-	public const float TENTACLE_GROWTH_SPEED = 0.25f;
-	public const float TENTACLE_GROWTH_RATE = 0.02f;
+	public const float TENTACLE_GROWTH_SPEED = 0.05f;
+	public const float TENTACLE_GROWTH_RATE = 0.04f;
+	public const float TENTACLE_MAX_TURN_ANGLE = 45f;
 
 	public List<FSprite> tentaclePieces;
 
@@ -29,7 +30,28 @@ public class WillsLakeScreen : GameScreen, FSingleTouchableInterface
 		if(isDragging)
 		{
 			UpdateDrag();
+		}else{
+			UpdateRetract();
 		}
+	}
+	
+	public void UpdateRetract()
+	{
+		if(tentaclePieces.Count == 0)
+		{
+			return;
+		}
+		if(Time.time - lastUpdate < TENTACLE_GROWTH_SPEED)
+		{
+			return;
+		}
+		lastUpdate = Time.time;
+		
+		FSprite last = tentaclePieces[tentaclePieces.Count - 1];
+		tentaclePieces.Remove (last);
+		last.RemoveFromContainer();
+		
+		UpdateTentacle();
 	}
 	
 	public void UpdateDrag()
@@ -38,6 +60,8 @@ public class WillsLakeScreen : GameScreen, FSingleTouchableInterface
 		{
 			return;
 		}
+		lastUpdate = Time.time;
+		
 		float tip_x, tip_y;
 		float bone_length = tentacle.sourceSize.y;
 		
@@ -69,12 +93,7 @@ public class WillsLakeScreen : GameScreen, FSingleTouchableInterface
 			bone.y = tip_y;
 			bone.anchorX = 0.0f;
 			
-			float growth = tentaclePieces.Count;
-			foreach(FSprite sprite in tentaclePieces)
-			{
-				sprite.scale = (1.0f + growth*TENTACLE_GROWTH_RATE);
-				growth--;
-			}
+			UpdateTentacle();
 			
 			//y-positive, invert the y
 			float angle = Mathf.Atan2(delta.y*-1, delta.x)*RXMath.RTOD;
@@ -82,6 +101,19 @@ public class WillsLakeScreen : GameScreen, FSingleTouchableInterface
 			bone.rotation = angle;
 		}
 	}
+	
+	public void UpdateTentacle()
+	{
+		float growth = tentaclePieces.Count;
+		foreach(FSprite sprite in tentaclePieces)
+		{
+			sprite.scale = (1.0f + growth*TENTACLE_GROWTH_RATE);
+			growth--;
+		}
+	}
+	
+	
+	//SINGLE TOUCH DELEGATE
 	
 	public bool HandleSingleTouchBegan(FTouch touch)
 	{
