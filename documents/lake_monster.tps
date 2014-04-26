@@ -184,6 +184,14 @@
             <filename>monster_pieces/monster.png</filename>
             <filename>monster_pieces/person.png</filename>
             <filename>monster_pieces/submarine.png</filename>
+            <filename>boats_subs/boat1_sonar.png</filename>
+            <filename>boats_subs/boat1.png</filename>
+            <filename>boats_subs/boat2_sonar.png</filename>
+            <filename>boats_subs/boat2.png</filename>
+            <filename>boats_subs/sub1_sonar.png</filename>
+            <filename>boats_subs/sub1.png</filename>
+            <filename>boats_subs/sub2_sonar.png</filename>
+            <filename>boats_subs/sub2.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
