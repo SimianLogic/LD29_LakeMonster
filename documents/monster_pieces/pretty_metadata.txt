@@ -3,7 +3,6 @@
 *****IMAGES
           root_height       (2048,)
           background       (0,0)
-          hello       (166,845)
           submarine       (360,653)
           tentacle       (86,681)
           boat       (-371,801)
@@ -13,9 +12,3 @@
 *****BUTTONS
 
 *****TEXT FIELDS
-          hello       (-484,985)
-                            COLOR: 0CFF00
-                             FONT: Arial-Black
-                    JUSTIFICATION: left
-                        FONT SIZE: 24
-                     DEFAULT TEXT: Hello World

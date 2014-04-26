@@ -180,7 +180,6 @@
             <filename>monster_pieces/background.png</filename>
             <filename>monster_pieces/tentacle.png</filename>
             <filename>../fonts/arial_black_120.png</filename>
-            <filename>monster_pieces/hello.png</filename>
             <filename>monster_pieces/boat.png</filename>
             <filename>monster_pieces/monster.png</filename>
             <filename>monster_pieces/person.png</filename>

@@ -18,19 +18,11 @@
 },
 "boat.png":
 {
-	"frame": {"x":1028,"y":680,"w":167,"h":96},
+	"frame": {"x":1208,"y":642,"w":167,"h":96},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":167,"h":96},
 	"sourceSize": {"w":167,"h":96}
-},
-"hello.png":
-{
-	"frame": {"x":1028,"y":642,"w":304,"h":36},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":304,"h":36},
-	"sourceSize": {"w":304,"h":36}
 },
 "monster.png":
 {
@@ -42,7 +34,7 @@
 },
 "person.png":
 {
-	"frame": {"x":1243,"y":680,"w":26,"h":53},
+	"frame": {"x":1102,"y":731,"w":26,"h":53},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":26,"h":53},
@@ -50,7 +42,7 @@
 },
 "submarine.png":
 {
-	"frame": {"x":1334,"y":642,"w":178,"h":87},
+	"frame": {"x":1028,"y":642,"w":178,"h":87},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":87},
@@ -58,11 +50,11 @@
 },
 "tentacle.png":
 {
-	"frame": {"x":1197,"y":680,"w":44,"h":72},
+	"frame": {"x":1028,"y":731,"w":72,"h":44},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":44,"h":72},
-	"sourceSize": {"w":44,"h":72}
+	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":44},
+	"sourceSize": {"w":72,"h":44}
 }},
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker ",
@@ -71,6 +63,6 @@
 	"format": "RGBA8888",
 	"size": {"w":2048,"h":4096},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:841dbb21cd1d0100cbab1d89401e81b4:10ea26820d5696b60d8dc7ecba0fff7f:0e7c0d252f68e0f8b21570423a6f2d92$"
+	"smartupdate": "$TexturePacker:SmartUpdate:c390613b25e635857a2acdcd643010ec:ec1140517023a4fadf2b8ccc80503d0a:0e7c0d252f68e0f8b21570423a6f2d92$"
 }
 }
