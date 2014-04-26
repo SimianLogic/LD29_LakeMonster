@@ -4,7 +4,7 @@
           root_height       (2048,)
           background       (0,0)
           submarine       (360,653)
-          tentacle       (86,681)
+          tentacle       (68,667)
           boat       (-371,801)
           person       (-431,837)
           monster       (0,-486)
