@@ -1,0 +1,14 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Futile/Rix/RXWatcher.cs">
+    <Files>
+      <File FileName="Assets/Scripts/LakeMonster.cs" Line="15" Column="29" />
+      <File FileName="Assets/Futile/Rix/Editor/RXWatcherLinkEditor.cs" Line="14" Column="16" />
+      <File FileName="Assets/Futile/Rix/RXWatcher.cs" Line="101" Column="27" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
