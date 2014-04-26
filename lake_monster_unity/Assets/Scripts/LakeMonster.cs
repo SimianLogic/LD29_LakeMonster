@@ -9,7 +9,8 @@ using System.IO;
 public class LakeMonster : MonoBehaviour
 {
 	private FContainer screen;
-	
+	public LakeScreen lake;
+
 	void Start()
 	{
 		FutileParams fparams = new FutileParams(true, true, false, false); //landscape left, right, portrait, portraitUpsideDown
@@ -28,11 +29,12 @@ public class LakeMonster : MonoBehaviour
 
 		ScreenManager.init(this, "");
 
-		LakeScreen lake = new LakeScreen();		
-		lake.y = lake.rootHeight/2 - Futile.screen.halfHeight - 500;
+		lake = new LakeScreen();		
+		lake.y = Futile.screen.halfHeight - lake.rootHeight / 2;
+		//lake.y = lake.rootHeight/2 - Futile.screen.halfHeight - 500;
 		ScreenManager.loadScreen(lake, ScreenSourceDirection.Instant);
 		
-		Go.to(lake, 5.0f, new TweenConfig().floatProp("y", Futile.screen.halfHeight - lake.rootHeight/2).setEaseType(EaseType.ExpoInOut).setDelay(0.1f));
+		//Go.to(lake, 5.0f, new TweenConfig().floatProp("y", Futile.screen.halfHeight - lake.rootHeight/2).setEaseType(EaseType.ExpoInOut).setDelay(0.1f));
 		
 		
 		
@@ -44,4 +46,8 @@ public class LakeMonster : MonoBehaviour
 		Debug.Log("HELLO WORLD");
 	}
 
+	void Update()
+	{
+		lake.update ();
+	}
 }
