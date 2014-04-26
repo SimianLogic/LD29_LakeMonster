@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class WillsLakeScreen : GameScreen, FSingleTouchableInterface
 {
 	public const float TENTACLE_GROWTH_SPEED = 0.25f;
-	public const float TENTACLE_GROWTH_RATE = 0.05f;
+	public const float TENTACLE_GROWTH_RATE = 0.02f;
 
 	public List<FSprite> tentaclePieces;
 
@@ -21,7 +21,7 @@ public class WillsLakeScreen : GameScreen, FSingleTouchableInterface
 		EnableSingleTouch();
 		tentaclePieces = new List<FSprite>();
 		tentacle = images["tentacle"].element;
-		depthY = rootHeight/2 - Futile.screen.height;
+		depthY = rootHeight/2 - Futile.screen.height - 50;
 	}
 	
 	public void Update()
