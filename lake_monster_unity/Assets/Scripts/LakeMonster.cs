@@ -9,7 +9,7 @@ using System.IO;
 public class LakeMonster : MonoBehaviour
 {
 	private WillsLakeScreen lake;
-	public LakeScreen lake;
+//	public LakeScreen lake;
 
 	void Start()
 	{
@@ -52,8 +52,4 @@ public class LakeMonster : MonoBehaviour
 		lake.Update ();
 	}
 
-	void Update()
-	{
-		lake.update ();
-	}
 }
