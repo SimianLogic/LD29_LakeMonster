@@ -55,11 +55,31 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 		tentaclePieces = new List<FSprite>();
 		
 		depthY = rootHeight/2 - Futile.screen.height - 50;
-
-		InitLevel4 ();
-
 	}
-
+	
+	public void startLevel(int which)
+	{
+		clearMe();
+		switch(which)
+		{
+			case 1:
+				InitLevel1();
+				break;
+			case 2:
+				InitLevel2();
+				break;
+			case 3:
+				InitLevel3();
+				break;
+			case 4:
+				InitLevel4();
+				break;				
+			default:
+				Debug.Log ("NO LEVEL " + which);
+				break;
+		}
+	}
+	
 	public void clearMe()
 	{
 		background.RemoveAllChildren ();
@@ -356,12 +376,17 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 				                               enemy.sonar.width, 
 				                               enemy.sonar.height);
 				                               								
-				debugRects[enemy].x = cached_rects[enemy].center.x;
-				debugRects[enemy].y = cached_rects[enemy].center.y;
-				debugRects[enemy].width = cached_rects[enemy].width;
-				debugRects[enemy].height = cached_rects[enemy].height;
-				
-				
+//				debugRects[enemy].x = cached_rects[enemy].center.x;
+//				debugRects[enemy].y = cached_rects[enemy].center.y;
+//				debugRects[enemy].width = cached_rects[enemy].width;
+//				debugRects[enemy].height = cached_rects[enemy].height;
+		
+				//use this to see if our enemy verts are in reasonable spots		
+//				Vector2 vertex = enemy.LocalToOther(enemy.sonar_vert_3, this);
+//				debugRects[enemy].x = vertex.x;
+//				debugRects[enemy].y = vertex.y;
+//				debugRects[enemy].width = 25;
+//				debugRects[enemy].height = 25;
 			}
 		}
 		
@@ -370,15 +395,53 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 		{
 			foreach(Enemy enemy in enemies)
 			{
+				//first see if we're even in the rect...
 				if(TestCircleRect(tentacle.x, tentacle.y, tentacle.width/2, cached_rects[enemy]))
 				{
 					tentacle.color = RXUtils.GetColorFromHex("ff0000");
+					
+					Vector2 vertex_a = enemy.LocalToOther(enemy.sonar_vert_1, this);
+					Vector2 vertex_b = enemy.LocalToOther(enemy.sonar_vert_2, this);
+					Vector2 vertex_c = enemy.LocalToOther(enemy.sonar_vert_2, this);
+					
+					
 					return true;
 				}else{
 					tentacle.color = RXUtils.GetColorFromHex("ffffff");
 				}
 				
 			}
+		}
+		return false;
+	}
+	
+	//adapted from http://processing.org/discourse/beta/num_1259957186.html
+	private bool TestLineCircle(Vector2 point1, Vector2 point2, float circle_x, float circle_y, float circle_r)
+	{
+		float dx = point2.x - point1.x;
+		float dy = point2.y - point1.y;
+		
+		float dx_dx = dx*dx;
+		float dy_dy = dy*dy;
+		
+		float long_squared = dx_dx + dy_dy;
+		float r_squared = circle_r*circle_r;
+		
+		float cdx1 = circle_x - point1.x;
+		float cdx2 = circle_x - point2.x;
+		
+		float cdy1 = circle_y - point1.y;
+		float cdy2 = circle_y - point2.y;
+		
+		float dot1 = dx*cdy1 - dy*cdx1;
+		float root = circle_r*circle_r*long_squared - dot1*dot1;
+		
+		if(root >= 0)
+		{
+			float dot2 = dx*cdx1 + dy*cdy1;
+			float t = dot2 / long_squared;
+			
+			return ((t >= 0 && t <= 1) || (cdx1*cdx1 + cdy1*cdy1 < r_squared) || (cdx2*cdx2 + cdy2*cdy2 < r_squared) );
 		}
 		return false;
 	}
