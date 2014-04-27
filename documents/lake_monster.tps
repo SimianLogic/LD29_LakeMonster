@@ -193,6 +193,13 @@
             <filename>../fonts/arial_black_120.png</filename>
             <filename>boats_subs/person_scuba.png</filename>
             <filename>boats_subs/debug_rect.png</filename>
+            <filename>newspaper/btn_continue_down.png</filename>
+            <filename>newspaper/btn_continue_up.png</filename>
+            <filename>newspaper/CONTINUE.png</filename>
+            <filename>newspaper/devoured.png</filename>
+            <filename>newspaper/headline.png</filename>
+            <filename>newspaper/paper.png</filename>
+            <filename>newspaper/pull_quote.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

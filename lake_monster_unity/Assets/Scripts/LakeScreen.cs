@@ -2,8 +2,13 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+//TODO: MAYBE PASS LEVEL ID?
+public delegate void GameOverDelegate();
+
 public class LakeScreen : GameScreen, FSingleTouchableInterface
 {
+	public GameOverDelegate onGameOver;
+
 	public const float TENTACLE_GROWTH_SPEED = 0.02f;
 	public const float TENTACLE_GROWTH_RATE = 0.02f;
 	public const float TENTACLE_MAX_TURN_ANGLE = 45f;
@@ -69,6 +74,12 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 			tentacle.RemoveFromContainer();
 		}
 		tentaclePieces.Clear ();
+		
+		foreach(FSprite debug in debugRects.Values)
+		{
+			debug.RemoveFromContainer();
+		}
+		debugRects.Clear();
 	}
 
 	public void InitLevel1()
@@ -285,7 +296,10 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 		if(TestForCollisions())
 		{
 			isDragging = false;
-			Debug.Log ("GAME OVER");
+			if(onGameOver != null)
+			{
+				onGameOver();
+			}
 		}
 		
 		if(TestForHumans())
