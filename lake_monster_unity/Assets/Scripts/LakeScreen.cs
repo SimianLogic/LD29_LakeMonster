@@ -9,7 +9,8 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 	public const float TENTACLE_MAX_TURN_ANGLE = 45f;
 	
 	public List<Enemy> enemies;
-	
+	public List<Human> humans;
+
 	public List<FSprite> tentaclePieces;
 	
 	public bool isDragging;
@@ -17,20 +18,65 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 	public float lastY;
 	public float lastUpdate;
 	public float depthY;
+
+	public FContainer foreground;
+	public FContainer midground;
+	public FContainer background;
 	
 
 	public LakeScreen() : base("monster_pieces")
 	{
 		EnableSingleTouch();
-		
+
+		foreground = new FContainer ();
+		midground  = new FContainer ();
+		background = new FContainer ();
+
+		AddChild (background);
+		AddChild (midground);
+		AddChild (foreground);
+
 		enemies = new List<Enemy> ();
+		humans =  new List<Human> ();
+
 		tentaclePieces = new List<FSprite>();
 		
 		depthY = rootHeight/2 - Futile.screen.height - 50;
-		
+
+		InitHumans ();
 		InitEnemies();
+
 	}
-	
+
+
+	public void InitHumans()
+	{
+		Human human1 = new Human ("person", new Vector2(300, 820));
+		background.AddChild (human1);
+
+		float human2Y = 790f;
+		List<PatrolStep> steps1= new List<PatrolStep> ();
+		steps1.Add (new PatrolStep (new Vector2 (-150, human2Y), new Vector2 (50, human2Y), 5f, -1));
+		steps1.Add (new PatrolStep (new Vector2 (50, human2Y), new Vector2 (-150, human2Y), 5f, 1));
+
+		Human human2 = new Human ("person_boat", steps1);
+		foreground.AddChild (human2);
+
+		float human3Y = 500f;
+		List<PatrolStep> steps2= new List<PatrolStep> ();
+		steps2.Add (new PatrolStep (new Vector2 (150, human3Y+10), new Vector2 (-100, human3Y-10), 15f, 1));
+		steps2.Add (new PatrolStep (new Vector2 (-100, human3Y-10), new Vector2 (150, human3Y+10), 15f, -1));
+
+		Human human3 = new Human ("person_scuba", steps2);
+		background.AddChild (human3);
+
+
+		humans.Add (human1);
+		humans.Add (human2);
+		humans.Add (human3);
+	}
+
+
 	public void InitEnemies()
 	{
 		float boat1Y = 800f;
@@ -39,7 +85,7 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 		steps1.Add (new PatrolStep (new Vector2 (400, boat1Y), new Vector2 (-400, boat1Y), 30f, 1));
 		
 		Enemy boat1 = new Enemy ("boat1", steps1);
-		AddChild (boat1);
+		midground.AddChild (boat1);
 		
 		float boat2Y = 785f;
 		List<PatrolStep> steps2 = new List<PatrolStep> ();
@@ -47,7 +93,7 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 		steps2.Add (new PatrolStep (new Vector2 (-400, boat2Y), new Vector2 (200, boat2Y), 40f, -1));
 		
 		Enemy boat2 = new Enemy ("boat2", steps2);
-		AddChild (boat2);
+		midground.AddChild (boat2);
 		
 		float sub1Y = 405f;
 		List<PatrolStep> steps3 = new List<PatrolStep> ();
@@ -55,7 +101,7 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 		steps3.Add (new PatrolStep (new Vector2 (-50, sub1Y-100), new Vector2 (450, sub1Y+50), 20f, -1));
 		
 		Enemy sub1 = new Enemy ("sub1", steps3);
-		AddChild (sub1);
+		midground.AddChild (sub1);
 		
 		float sub2Y = 400f;
 		List<PatrolStep> steps4= new List<PatrolStep> ();
@@ -63,7 +109,7 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 		steps4.Add (new PatrolStep (new Vector2 (100, sub2Y+100), new Vector2 (-440, sub2Y-50), 50f, 1));
 		
 		Enemy sub2 = new Enemy ("sub2", steps4);
-		AddChild (sub2);
+		midground.AddChild (sub2);
 		
 		float myScale = 0.7f;
 		boat1.scaleX = boat1.scaleX* myScale;
@@ -87,6 +133,11 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 		foreach(Enemy enemy in enemies)
 		{
 			enemy.update();
+		}
+
+		foreach(Human man in humans)
+		{
+			man.update();
 		}
 		
 		if(isDragging)
