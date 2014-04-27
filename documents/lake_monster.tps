@@ -190,6 +190,8 @@
             <filename>boats_subs/sub2_sonar.png</filename>
             <filename>boats_subs/sub2.png</filename>
             <filename>boats_subs/tentacle.png</filename>
+            <filename>../fonts/arial_black_120.png</filename>
+            <filename>boats_subs/person_scuba.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

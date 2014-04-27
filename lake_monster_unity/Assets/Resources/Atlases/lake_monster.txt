@@ -1,5 +1,13 @@
 {"frames": {
 
+"arial_black_120.png":
+{
+	"frame": {"x":1030,"y":3,"w":1010,"h":638},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":1,"w":1010,"h":638},
+	"sourceSize": {"w":1024,"h":1024}
+},
 "background.png":
 {
 	"frame": {"x":3,"y":3,"w":1024,"h":2048},
@@ -10,7 +18,7 @@
 },
 "boat1.png":
 {
-	"frame": {"x":1734,"y":194,"w":159,"h":78},
+	"frame": {"x":1734,"y":835,"w":159,"h":78},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":159,"h":78},
@@ -18,7 +26,7 @@
 },
 "boat1_sonar.png":
 {
-	"frame": {"x":1433,"y":3,"w":298,"h":409},
+	"frame": {"x":1433,"y":644,"w":298,"h":409},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":3,"y":2,"w":298,"h":409},
@@ -26,7 +34,7 @@
 },
 "boat2.png":
 {
-	"frame": {"x":1734,"y":330,"w":115,"h":49},
+	"frame": {"x":1734,"y":971,"w":115,"h":49},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":1,"w":115,"h":49},
@@ -34,7 +42,7 @@
 },
 "boat2_sonar.png":
 {
-	"frame": {"x":1924,"y":106,"w":115,"h":228},
+	"frame": {"x":1924,"y":747,"w":115,"h":228},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":7,"y":10,"w":115,"h":228},
@@ -50,7 +58,7 @@
 },
 "person.png":
 {
-	"frame": {"x":1976,"y":33,"w":38,"h":59},
+	"frame": {"x":1976,"y":674,"w":38,"h":59},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":59},
@@ -58,15 +66,23 @@
 },
 "person_boat.png":
 {
-	"frame": {"x":1734,"y":275,"w":126,"h":52},
+	"frame": {"x":1734,"y":916,"w":126,"h":52},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":126,"h":52},
 	"sourceSize": {"w":126,"h":52}
 },
+"person_scuba.png":
+{
+	"frame": {"x":1734,"y":1023,"w":90,"h":34},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":90,"h":34},
+	"sourceSize": {"w":90,"h":34}
+},
 "sub1.png":
 {
-	"frame": {"x":1734,"y":106,"w":187,"h":85},
+	"frame": {"x":1734,"y":747,"w":187,"h":85},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":1,"w":187,"h":85},
@@ -74,7 +90,7 @@
 },
 "sub1_sonar.png":
 {
-	"frame": {"x":1030,"y":3,"w":400,"h":171},
+	"frame": {"x":1030,"y":644,"w":400,"h":171},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":1,"w":400,"h":171},
@@ -82,7 +98,7 @@
 },
 "sub2.png":
 {
-	"frame": {"x":1852,"y":337,"w":105,"h":55},
+	"frame": {"x":1852,"y":978,"w":105,"h":55},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":105,"h":55},
@@ -90,7 +106,7 @@
 },
 "sub2_sonar.png":
 {
-	"frame": {"x":1734,"y":3,"w":239,"h":100},
+	"frame": {"x":1734,"y":644,"w":239,"h":100},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":2,"w":239,"h":100},
@@ -98,7 +114,7 @@
 },
 "tentacle.png":
 {
-	"frame": {"x":1976,"y":3,"w":40,"h":27},
+	"frame": {"x":1976,"y":644,"w":40,"h":27},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":40,"h":27},
@@ -111,6 +127,6 @@
 	"format": "RGBA8888",
 	"size": {"w":2048,"h":4096},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:c7c6fa196c2fc68b335408cbf49eb3e4:13e3fd57be266b6475ce30db42d7419d:0e7c0d252f68e0f8b21570423a6f2d92$"
+	"smartupdate": "$TexturePacker:SmartUpdate:7312142159a45b1ced6db9e2e4229221:f0ac2b7d0cdc2e59834fe07ef65a7c5f:0e7c0d252f68e0f8b21570423a6f2d92$"
 }
 }
