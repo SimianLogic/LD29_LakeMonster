@@ -2,7 +2,7 @@
 
 "arial_black_120.png":
 {
-	"frame": {"x":1028,"y":2,"w":1010,"h":638},
+	"frame": {"x":5,"y":3138,"w":1010,"h":638},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":2,"y":1,"w":1010,"h":638},
@@ -10,7 +10,7 @@
 },
 "background.png":
 {
-	"frame": {"x":2,"y":2,"w":1024,"h":2048},
+	"frame": {"x":5,"y":5,"w":1024,"h":2048},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":1024,"h":2048},
@@ -18,7 +18,7 @@
 },
 "boat.png":
 {
-	"frame": {"x":1730,"y":920,"w":167,"h":96},
+	"frame": {"x":1742,"y":292,"w":167,"h":96},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":167,"h":96},
@@ -26,7 +26,7 @@
 },
 "boat1.png":
 {
-	"frame": {"x":1730,"y":1018,"w":159,"h":78},
+	"frame": {"x":1742,"y":393,"w":159,"h":78},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":159,"h":78},
@@ -34,7 +34,7 @@
 },
 "boat1_sonar.png":
 {
-	"frame": {"x":1430,"y":642,"w":298,"h":409},
+	"frame": {"x":1439,"y":5,"w":298,"h":409},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":3,"y":2,"w":298,"h":409},
@@ -42,7 +42,7 @@
 },
 "boat2.png":
 {
-	"frame": {"x":1899,"y":974,"w":115,"h":49},
+	"frame": {"x":1906,"y":433,"w":115,"h":49},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":1,"w":115,"h":49},
@@ -50,7 +50,7 @@
 },
 "boat2_sonar.png":
 {
-	"frame": {"x":1919,"y":744,"w":115,"h":228},
+	"frame": {"x":1925,"y":200,"w":115,"h":228},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":7,"y":10,"w":115,"h":228},
@@ -58,7 +58,7 @@
 },
 "monster.png":
 {
-	"frame": {"x":2,"y":2052,"w":1024,"h":1075},
+	"frame": {"x":5,"y":2058,"w":1024,"h":1075},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":1024,"h":1075},
@@ -66,7 +66,7 @@
 },
 "person.png":
 {
-	"frame": {"x":2013,"y":642,"w":26,"h":53},
+	"frame": {"x":1986,"y":37,"w":26,"h":53},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":26,"h":53},
@@ -74,7 +74,7 @@
 },
 "sub1.png":
 {
-	"frame": {"x":1730,"y":744,"w":187,"h":85},
+	"frame": {"x":1742,"y":110,"w":187,"h":85},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":1,"w":187,"h":85},
@@ -82,7 +82,7 @@
 },
 "sub1_sonar.png":
 {
-	"frame": {"x":1028,"y":642,"w":400,"h":171},
+	"frame": {"x":1034,"y":5,"w":400,"h":171},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":1,"w":400,"h":171},
@@ -90,7 +90,7 @@
 },
 "sub2.png":
 {
-	"frame": {"x":1891,"y":1025,"w":105,"h":55},
+	"frame": {"x":1934,"y":110,"w":105,"h":55},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":105,"h":55},
@@ -98,7 +98,7 @@
 },
 "sub2_sonar.png":
 {
-	"frame": {"x":1730,"y":642,"w":239,"h":100},
+	"frame": {"x":1742,"y":5,"w":239,"h":100},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":2,"w":239,"h":100},
@@ -106,7 +106,7 @@
 },
 "submarine.png":
 {
-	"frame": {"x":1730,"y":831,"w":178,"h":87},
+	"frame": {"x":1742,"y":200,"w":178,"h":87},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":87},
@@ -114,7 +114,7 @@
 },
 "tentacle.png":
 {
-	"frame": {"x":1971,"y":642,"w":40,"h":27},
+	"frame": {"x":1986,"y":5,"w":40,"h":27},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":40,"h":27},
@@ -127,6 +127,6 @@
 	"format": "RGBA8888",
 	"size": {"w":2048,"h":4096},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:54a2793ad12c948719b9b446f14aa174:e9ca6e8ca133f156d211ae05b655f006:0e7c0d252f68e0f8b21570423a6f2d92$"
+	"smartupdate": "$TexturePacker:SmartUpdate:5b69bc96f1daf4f47160473df0e26452:755c4da3743da01bc6ec71b91108d030:0e7c0d252f68e0f8b21570423a6f2d92$"
 }
 }
