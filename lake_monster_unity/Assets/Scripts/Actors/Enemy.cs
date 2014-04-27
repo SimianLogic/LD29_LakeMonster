@@ -16,20 +16,20 @@ public class Enemy : Actor
 		switch(name)
 		{
 			case "boat1":
-				sonar.y = -235f;
-				sonar.x = -20f;
+				sonar.y = -165f;
+				sonar.x = -14f;
 				break;
 			case "boat2":
-				sonar.y = -130f;
-				sonar.x = -10f;
+				sonar.y = -91f;
+				sonar.x = -7f;
 				break;
 			case "sub1":
-				sonar.y = 5f;
-				sonar.x = -250f;
+				sonar.y = 4f;
+				sonar.x = -175f;
 				break;
 			case "sub2":
-				sonar.y = 5f;
-				sonar.x = -150f;
+				sonar.y = 4f;
+				sonar.x = -105f;
 				break;
 			default:
 				break;

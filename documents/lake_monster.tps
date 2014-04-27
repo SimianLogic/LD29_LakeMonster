@@ -192,6 +192,7 @@
             <filename>boats_subs/tentacle.png</filename>
             <filename>../fonts/arial_black_120.png</filename>
             <filename>boats_subs/person_scuba.png</filename>
+            <filename>boats_subs/debug_rect.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
