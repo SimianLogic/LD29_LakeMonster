@@ -3,19 +3,46 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-public class Enemy : FSprite
+public class Enemy : FContainer
 {
 
 	private List<PatrolStep> steps;
 	private int stepIndex;
+	public FSprite body;
+	public FSprite sonar;
 
-	public Enemy(string name):base(name)
+	public Enemy(string name, List<PatrolStep> steps):base()
 	{
-		float boatY = 800f;
+		this.steps = steps;
+		body = new FSprite (name);
+		sonar = new FSprite (name + "_sonar");
+		AddChild (body);
+		AddChild (sonar);
+
+		switch(name)
+		{
+			case "boat1":
+				sonar.y = -235f;
+				sonar.x = -20f;
+				break;
+			case "boat2":
+				sonar.y = -130f;
+				sonar.x = -10f;
+				break;
+			case "sub1":
+				sonar.y = 5f;
+				sonar.x = -250f;
+				break;
+			case "sub2":
+				sonar.y = 5f;
+				sonar.x = -150f;
+				break;
+			default:
+				break;
+		}
+
 		Debug.Log ("Enemy constructed " + name);
-		steps = new List<PatrolStep> ();
-		steps.Add (new PatrolStep (new Vector2 (-400, boatY), new Vector2 (400, boatY), 50f, -1));
-		steps.Add (new PatrolStep (new Vector2 (400, boatY), new Vector2 (-400, boatY), 20f, 1));
+
 		stepIndex = -1;
 
 		nextStep ();
@@ -58,28 +85,14 @@ public class Enemy : FSprite
 		x = steps [stepIndex].startPos.x;
 		y = steps [stepIndex].startPos.y;
 
-		scaleX = steps [stepIndex].facingDirection;
+		if( (scaleX < 0 && steps [stepIndex].facingDirection > 0) || (scaleX > 0 && steps [stepIndex].facingDirection < 0))
+		{
+			scaleX = scaleX * -1;
+		}
 	}
 
 }
 
-class PatrolStep
-{
-	public Vector2 startPos;
-	public Vector2 endPos;
-	public float velocity;
-	public int facingDirection;
-	public Vector2 velocityVector;
 
-	public PatrolStep(Vector2 start_pos, Vector2 end_pos, float velocity, int facing )
-	{
-		startPos = start_pos;
-		endPos = end_pos;
-		this.velocity = velocity;
-		facingDirection = facing;
-		velocityVector = Vector2.ClampMagnitude( new Vector2(endPos.x - startPos.x, endPos.y - startPos.y), this.velocity);
-	}
-
-}
 
 

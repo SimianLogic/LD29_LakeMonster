@@ -8,8 +8,8 @@ using System.IO;
 
 public class LakeMonster : MonoBehaviour
 {
-	private WillsLakeScreen lake;
-//	public LakeScreen lake;
+//	private WillsLakeScreen lake;
+	public LakeScreen lake;
 
 	void Start()
 	{
@@ -29,7 +29,8 @@ public class LakeMonster : MonoBehaviour
 
 		ScreenManager.init(this, "");
 
-		lake = new WillsLakeScreen();		
+//		lake = new WillsLakeScreen();	
+		lake = new LakeScreen();
 //		lake.y = lake.rootHeight/2 - Futile.screen.halfHeight - 500;
 		lake.y = Futile.screen.halfHeight - lake.rootHeight/2;
 		ScreenManager.loadScreen(lake, ScreenSourceDirection.Instant);
