@@ -42,6 +42,7 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 
 		enemies = new List<Enemy> ();
 		humans =  new List<Human> ();
+		debugRects = new Dictionary<Enemy, FSprite>();
 
 		tentaclePieces = new List<FSprite>();
 		
@@ -115,17 +116,6 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 		Enemy sub2 = new Enemy ("sub2", steps4);
 		midground.AddChild (sub2);
 		
-		float myScale = 0.7f;
-		boat1.scaleX = boat1.scaleX* myScale;
-		boat2.scaleX = boat2.scaleX * myScale;
-		sub1.scaleX = sub1.scaleX * myScale;
-		sub2.scaleX = sub2.scaleX * myScale;
-		
-		boat1.scaleY =  myScale;
-		boat2.scaleY =  myScale;
-		sub1.scaleY = myScale;
-		sub2.scaleY = myScale;
-		
 		enemies.Add (boat1);
 		enemies.Add (boat2);
 		enemies.Add (sub1);
@@ -160,32 +150,45 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 	
 	public bool TestForCollisions()
 	{
-	
 		Dictionary<Enemy, Rect> cached_rects = new Dictionary<Enemy, Rect>();
+		foreach(Enemy enemy in enemies)
+		{
+			if(!cached_rects.ContainsKey(enemy))
+			{
+				//this code puts bright orange debug rects over the rect of the sonar bits
+				
+				if(!debugRects.ContainsKey(enemy))
+				{
+					debugRects[enemy] = new FSprite("debug_rect");
+					AddChild(debugRects[enemy]);
+				}
+				
+				Vector2 sonar_pos = enemy.LocalToOther(enemy.sonar.GetPosition(), this);
+				cached_rects[enemy] = new Rect(sonar_pos.x - enemy.sonar.width/2, 
+				                               sonar_pos.y - enemy.sonar.height/2, 
+				                               enemy.sonar.width, 
+				                               enemy.sonar.height);
+				                               								
+				debugRects[enemy].x = cached_rects[enemy].center.x;
+				debugRects[enemy].y = cached_rects[enemy].center.y;
+				debugRects[enemy].width = cached_rects[enemy].width;
+				debugRects[enemy].height = cached_rects[enemy].height;
+				
+				
+			}
+		}
+		
+		
 		foreach(FSprite tentacle in tentaclePieces)
 		{
 			foreach(Enemy enemy in enemies)
 			{
-				if(!cached_rects.ContainsKey(enemy))
-				{
-					//first get the sonar's rect, which at least we know isn't rotated
-					Rect sonar_rect = enemy.sonar.GetTextureRectRelativeToContainer();
-					//now get the sonar_rect relative to the container
-					Vector2 xy = enemy.LocalToOther(new Vector2(sonar_rect.x, sonar_rect.y), this);
-					Vector2 wh = enemy.LocalToOther (new Vector2(sonar_rect.width, sonar_rect.height), this);
-					
-					cached_rects[enemy] = new Rect(xy.x, xy.y, wh.x, wh.y);
-					
-					if(!debugRects.ContainsKey(enemy))
-					{
-						debugRects[enemy] = new FSprite("debug_rect");
-					}
-				}
-				
 				if(TestCircleRect(tentacle.x, tentacle.y, tentacle.width/2, cached_rects[enemy]))
 				{
-					Debug.Log ("HIT HIT HIT HIT HIT");
+					tentacle.color = RXUtils.GetColorFromHex("ff0000");
 					return true;
+				}else{
+					tentacle.color = RXUtils.GetColorFromHex("ffffff");
 				}
 				
 			}
