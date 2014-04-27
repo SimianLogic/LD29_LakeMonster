@@ -13,7 +13,7 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 	public List<Enemy> enemies;
 	public List<Human> humans;
 	
-	public Dictionary<Enemy,FSprite> debugRects;
+	public Dictionary<Actor,FSprite> debugRects;
 	
 	public List<FSprite> tentaclePieces;
 	
@@ -22,6 +22,9 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 	public float lastY;
 	public float lastUpdate;
 	public float depthY;
+	
+	public bool hasAHuman;
+	public Human fishFood;
 
 	public FContainer foreground;
 	public FContainer midground;
@@ -42,7 +45,7 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 
 		enemies = new List<Enemy> ();
 		humans =  new List<Human> ();
-		debugRects = new Dictionary<Enemy, FSprite>();
+		debugRects = new Dictionary<Actor, FSprite>();
 
 		tentaclePieces = new List<FSprite>();
 		
@@ -264,6 +267,19 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 			UpdateDrag();
 		}else{
 			UpdateRetract();
+			
+			if(hasAHuman)
+			{
+				if(tentaclePieces.Count > 0)
+				{
+					FSprite tip = tentaclePieces.GetLastObject();
+					fishFood.x = tip.x;
+					fishFood.y = tip.y;
+				}else{
+					hasAHuman = false;
+					fishFood = null;
+				}
+			}
 		}
 		
 		if(TestForCollisions())
@@ -271,6 +287,38 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 			isDragging = false;
 			Debug.Log ("GAME OVER");
 		}
+		
+		if(TestForHumans())
+		{
+			isDragging = false;
+		}
+	}
+	
+	public bool TestForHumans()
+	{
+		//no need to cache rects, we're comparing many:1 not many:many
+		foreach(Human human in humans)
+		{
+			Rect test = new Rect(human.x - human.body.width/2, human.y - human.body.height/2, human.body.width, human.body.height);
+			
+			if(tentaclePieces.Count > 0)
+			{
+				//just the tip of the tentacle
+				FSprite tentacle = tentaclePieces.GetLastObject();
+				if(TestCircleRect(tentacle.x, tentacle.y, tentacle.width/2, test))
+				{
+					tentacle.color = RXUtils.GetColorFromHex("ff0000");
+					hasAHuman = true;
+					fishFood = human;
+					humans.Remove(human);
+					return true;
+				}else{
+					tentacle.color = RXUtils.GetColorFromHex("ffffff");
+				}
+			}
+		}
+
+		return false;
 	}
 	
 	public bool TestForCollisions()
@@ -285,7 +333,7 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 				if(!debugRects.ContainsKey(enemy))
 				{
 					debugRects[enemy] = new FSprite("debug_rect");
-					//AddChild(debugRects[enemy]);
+					AddChild(debugRects[enemy]);
 				}
 				
 				Vector2 sonar_pos = enemy.LocalToOther(enemy.sonar.GetPosition(), this);
