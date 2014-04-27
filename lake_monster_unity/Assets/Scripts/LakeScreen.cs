@@ -4,11 +4,14 @@ using System.Collections.Generic;
 
 public class LakeScreen : GameScreen, FSingleTouchableInterface
 {
-	public const float TENTACLE_GROWTH_SPEED = 0.05f;
-	public const float TENTACLE_GROWTH_RATE = 0.03f;
+	public const float TENTACLE_GROWTH_SPEED = 0.02f;
+	public const float TENTACLE_GROWTH_RATE = 0.02f;
 	public const float TENTACLE_MAX_TURN_ANGLE = 45f;
+	public const float TENTACLE_BONE_LENGTH = 0.45f;
+	public const int MAX_TENTACLE_PIECES = 75;
 	
 	public List<Enemy> enemies;
+	public Dictionary<Enemy,FSprite> debugRects;
 	
 	public List<FSprite> tentaclePieces;
 	
@@ -95,8 +98,66 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 		}else{
 			UpdateRetract();
 		}
+		
+		if(TestForCollisions())
+		{
+			isDragging = false;
+			Debug.Log ("GAME OVER");
+		}
 	}
 	
+	public bool TestForCollisions()
+	{
+	
+		Dictionary<Enemy, Rect> cached_rects = new Dictionary<Enemy, Rect>();
+		foreach(FSprite tentacle in tentaclePieces)
+		{
+			foreach(Enemy enemy in enemies)
+			{
+				if(!cached_rects.ContainsKey(enemy))
+				{
+					//first get the sonar's rect, which at least we know isn't rotated
+					Rect sonar_rect = enemy.sonar.GetTextureRectRelativeToContainer();
+					//now get the sonar_rect relative to the container
+					Vector2 xy = enemy.LocalToOther(new Vector2(sonar_rect.x, sonar_rect.y), this);
+					Vector2 wh = enemy.LocalToOther (new Vector2(sonar_rect.width, sonar_rect.height), this);
+					
+					cached_rects[enemy] = new Rect(xy.x, xy.y, wh.x, wh.y);
+					
+					if(!debugRects.ContainsKey(enemy))
+					{
+						debugRects[enemy] = new FSprite("debug_rect");
+					}
+				}
+				
+				if(TestCircleRect(tentacle.x, tentacle.y, tentacle.width/2, cached_rects[enemy]))
+				{
+					Debug.Log ("HIT HIT HIT HIT HIT");
+					return true;
+				}
+				
+			}
+		}
+		return false;
+	}
+	
+	private bool TestCircleRect(float circle_x, float circle_y, float circle_r, Rect rect)
+	{
+		//http://stackoverflow.com/questions/401847/circle-rectangle-collision-detection-intersection
+		
+		// Find the closest point to the circle within the rectangle
+		float closest_x = Mathf.Clamp(circle_x, rect.xMin, rect.xMax);
+		float closest_y = Mathf.Clamp (circle_y, rect.yMin, rect.yMax);
+		
+		// Calculate the distance between the circle's center and this closest point
+		float dx = circle_x - closest_x;
+		float dy = circle_y - closest_y;
+		
+		// If the distance is less than the circle's radius, an intersection occurs
+		float d_squared = dx*dx + dy*dy;
+		
+		return (d_squared < circle_r*circle_r);
+	}
 	
 	
 	public void UpdateRetract()
@@ -129,7 +190,7 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 		float tip_x, tip_y;
 		
 		FAtlasElement tentacle = Futile.atlasManager.GetElementWithName("tentacle");
-		float bone_length = tentacle.sourceSize.y * 0.8f;
+		float bone_length = tentacle.sourceSize.y * TENTACLE_BONE_LENGTH;
 		
 		if(tentaclePieces.Count == 0)
 		{
@@ -149,7 +210,7 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 		Vector2 delta = new Vector2(lastX - tip_x, lastY - tip_y);
 		if(delta.magnitude > bone_length)
 		{
-			if(tentaclePieces.Count < 50)
+			if(tentaclePieces.Count < MAX_TENTACLE_PIECES)
 			{
 				//add a new bone and point it at lastX/lastY
 				FSprite bone = new FSprite("tentacle");
