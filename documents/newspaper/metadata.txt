@@ -1,1 +1,1 @@
-root_width|1024+root_height|768+paper|-3|51+headline|-171|159+pull_quote|383|-79+devoured|299|122+btn_continue_down|332|-329+btn_continue_up|332|-326+CONTINUE|336|-326
+root_width|1024+root_height|768+paper|-3|51+headline|-171|159+pull_quote|383|-79+devoured|299|122+btn_continue_down|364|-327+btn_continue_up|364|-327+Continue|370|-333+btn_back_down|111|-327+btn_back_up|111|-327+back_text|110|-325

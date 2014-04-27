@@ -1,0 +1,1 @@
+root_width|1024+root_height|768+screen|0|0+btn_start_down|376|-229+btn_start_up|376|-229+Start|371|-226

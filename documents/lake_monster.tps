@@ -100,7 +100,7 @@
             <key>maxRects</key>
             <struct type="AlgorithmMaxRectsSettings">
                 <key>heuristic</key>
-                <enum type="AlgorithmMaxRectsSettings::Heuristic">Best</enum>
+                <enum type="AlgorithmMaxRectsSettings::Heuristic">LongSideFit</enum>
             </struct>
             <key>basic</key>
             <struct type="AlgorithmBasicSettings">
@@ -200,6 +200,29 @@
             <filename>newspaper/headline.png</filename>
             <filename>newspaper/paper.png</filename>
             <filename>newspaper/pull_quote.png</filename>
+            <filename>levelChooser/background.png</filename>
+            <filename>levelChooser/btn_next_down.png</filename>
+            <filename>levelChooser/btn_next_up.png</filename>
+            <filename>levelChooser/btn_play1_down.png</filename>
+            <filename>levelChooser/btn_play1_up.png</filename>
+            <filename>levelChooser/btn_play2_down.png</filename>
+            <filename>levelChooser/btn_play2_up.png</filename>
+            <filename>levelChooser/btn_play3_down.png</filename>
+            <filename>levelChooser/btn_play3_up.png</filename>
+            <filename>levelChooser/btn_prev_down.png</filename>
+            <filename>levelChooser/btn_prev_up.png</filename>
+            <filename>levelChooser/next.png</filename>
+            <filename>levelChooser/previous.png</filename>
+            <filename>greetings_lochness_cleanup/btn_start_down.png</filename>
+            <filename>greetings_lochness_cleanup/btn_start_up.png</filename>
+            <filename>greetings_lochness_cleanup/screen.png</filename>
+            <filename>greetings_lochness_cleanup/Start.png</filename>
+            <filename>levelChooser/level_background.png</filename>
+            <filename>../fonts/BrushScriptStd_64.png</filename>
+            <filename>newspaper/back_text.png</filename>
+            <filename>newspaper/btn_back_down.png</filename>
+            <filename>newspaper/btn_back_up.png</filename>
+            <filename>newspaper/Continue.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

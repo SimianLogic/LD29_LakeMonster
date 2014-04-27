@@ -1,0 +1,12 @@
+********** greetings_lochness_cleanup **********
+
+*****IMAGES
+          root_height       (768,)
+          screen       (0,0)
+          btn_start_down       (376,-229)
+          Start       (371,-226)
+
+*****BUTTONS
+          start       (376,-229)
+
+*****TEXT FIELDS
