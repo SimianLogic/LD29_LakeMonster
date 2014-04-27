@@ -56,7 +56,7 @@
             </struct>
         </struct>
         <key>shapePadding</key>
-        <uint>5</uint>
+        <uint>3</uint>
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
@@ -68,7 +68,7 @@
         <key>textureFormat</key>
         <enum type="SettingsBase::TextureFormat">png</enum>
         <key>borderPadding</key>
-        <uint>5</uint>
+        <uint>3</uint>
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
@@ -178,20 +178,18 @@
         <key>fileList</key>
         <array>
             <filename>monster_pieces/background.png</filename>
-            <filename>monster_pieces/tentacle.png</filename>
-            <filename>../fonts/arial_black_120.png</filename>
-            <filename>monster_pieces/boat.png</filename>
             <filename>monster_pieces/monster.png</filename>
-            <filename>monster_pieces/person.png</filename>
-            <filename>monster_pieces/submarine.png</filename>
             <filename>boats_subs/boat1_sonar.png</filename>
             <filename>boats_subs/boat1.png</filename>
             <filename>boats_subs/boat2_sonar.png</filename>
             <filename>boats_subs/boat2.png</filename>
+            <filename>boats_subs/person_boat.png</filename>
+            <filename>boats_subs/person.png</filename>
             <filename>boats_subs/sub1_sonar.png</filename>
             <filename>boats_subs/sub1.png</filename>
             <filename>boats_subs/sub2_sonar.png</filename>
             <filename>boats_subs/sub2.png</filename>
+            <filename>boats_subs/tentacle.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
