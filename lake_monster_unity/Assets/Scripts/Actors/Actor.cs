@@ -21,6 +21,8 @@ public class Actor : FContainer
 
 	public virtual void update()
 	{
+		if(steps == null) return;
+
 		float dt = Time.deltaTime;
 		PatrolStep step = steps [stepIndex];
 		float vx = step.velocityVector.x * dt;
@@ -51,6 +53,8 @@ public class Actor : FContainer
 
 	public void nextStep()
 	{
+		if(steps == null) return;
+
 		stepIndex = (stepIndex + 1) % steps.Count;
 		x = steps [stepIndex].startPos.x;
 		y = steps [stepIndex].startPos.y;
