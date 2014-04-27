@@ -48,9 +48,134 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 		
 		depthY = rootHeight/2 - Futile.screen.height - 50;
 
-		InitHumans ();
-		InitEnemies();
+		InitLevel4 ();
 
+	}
+
+	public void clearMe()
+	{
+		background.RemoveAllChildren ();
+		foreground.RemoveAllChildren ();
+		midground.RemoveAllChildren ();
+
+		enemies.Clear ();
+		humans.Clear ();
+
+		foreach(FSprite tentacle in tentaclePieces)
+		{
+			tentacle.RemoveFromContainer();
+		}
+		tentaclePieces.Clear ();
+	}
+
+	public void InitLevel1()
+	{
+		clearMe ();
+		
+		Human human1 = new Human ("person_boat", LevelActorPaths.GetLevel1_Humans()[0]);
+		foreground.AddChild (human1);
+		humans.Add (human1);
+
+		List<List<PatrolStep>> allPaths = LevelActorPaths.GetLevel1_Enemies ();
+
+		Enemy boat1 = new Enemy ("boat2", allPaths[0]);
+		midground.AddChild (boat1);
+		Enemy boat2 = new Enemy ("boat1", allPaths[1]);
+		midground.AddChild (boat2);
+		enemies.Add (boat1);
+		enemies.Add (boat2);
+		
+	}
+
+	public void InitLevel2()
+	{
+		clearMe ();
+		
+		Human human1 = new Human ("person", new Vector2(300, 820));
+		background.AddChild (human1);
+		humans.Add (human1);
+		Human human2 = new Human ("person_boat", LevelActorPaths.GetLevel2_Humans()[0]);
+		foreground.AddChild (human2);
+		humans.Add (human2);
+
+		List<List<PatrolStep>> allPaths = LevelActorPaths.GetLevel2_Enemies ();
+
+		Enemy boat1 = new Enemy ("boat2", allPaths[0]);
+		midground.AddChild (boat1);
+		enemies.Add (boat1);
+		Enemy boat2 = new Enemy ("boat2", allPaths[1]);
+		background.AddChild (boat2);
+		enemies.Add (boat2);
+		Enemy boat3 = new Enemy ("sub2", allPaths[2]);
+		midground.AddChild (boat3);
+		enemies.Add (boat3);
+	}
+
+	public void InitLevel3()
+	{
+		clearMe ();
+
+		List<List<PatrolStep>> allHumanPaths = LevelActorPaths.GetLevel3_Humans();
+
+		Human human1 = new Human ("person", new Vector2(300, 820));
+		background.AddChild (human1);
+		humans.Add (human1);	
+		Human human2 = new Human ("person_boat", allHumanPaths[0]);
+		foreground.AddChild (human2);
+		humans.Add (human2);
+		Human human3 = new Human ("person_scuba", allHumanPaths[1]);
+		foreground.AddChild (human3);
+		humans.Add (human3);
+		
+		List<List<PatrolStep>> allEnemyPaths = LevelActorPaths.GetLevel3_Enemies ();
+		
+		Enemy boat1 = new Enemy ("boat1", allEnemyPaths[0]);
+		midground.AddChild (boat1);
+		enemies.Add (boat1);
+		Enemy boat2 = new Enemy ("boat2", allEnemyPaths[1]);
+		midground.AddChild (boat2);
+		enemies.Add (boat2);
+		Enemy boat3 = new Enemy ("sub1", allEnemyPaths[2]);
+		midground.AddChild (boat3);
+		enemies.Add (boat3);
+		Enemy boat4 = new Enemy ("sub2", allEnemyPaths[3]);
+		midground.AddChild (boat4);
+		enemies.Add (boat4);
+	}
+
+	public void InitLevel4()
+	{
+		clearMe ();
+		
+		List<List<PatrolStep>> allHumanPaths = LevelActorPaths.GetLevel4_Humans();
+		
+		Human human1 = new Human ("person", new Vector2(300, 820));
+		background.AddChild (human1);
+		humans.Add (human1);	
+		Human human2 = new Human ("person_boat", allHumanPaths[0]);
+		foreground.AddChild (human2);
+		humans.Add (human2);
+		Human human3 = new Human ("person_scuba", allHumanPaths[1]);
+		foreground.AddChild (human3);
+		humans.Add (human3);
+		Human human4 = new Human ("person_scuba", allHumanPaths[2]);
+		foreground.AddChild (human4);
+		humans.Add (human4);
+		
+		List<List<PatrolStep>> allEnemyPaths = LevelActorPaths.GetLevel4_Enemies ();
+		
+		Enemy boat1 = new Enemy ("boat1", allEnemyPaths[0]);
+		midground.AddChild (boat1);
+		enemies.Add (boat1);
+		Enemy boat2 = new Enemy ("boat2", allEnemyPaths[1]);
+		midground.AddChild (boat2);
+		enemies.Add (boat2);
+		Enemy boat3 = new Enemy ("sub1", allEnemyPaths[2]);
+		midground.AddChild (boat3);
+		enemies.Add (boat3);
+		Enemy boat4 = new Enemy ("sub2", allEnemyPaths[3]);
+		midground.AddChild (boat4);
+		enemies.Add (boat4);
 	}
 
 
@@ -160,7 +285,7 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 				if(!debugRects.ContainsKey(enemy))
 				{
 					debugRects[enemy] = new FSprite("debug_rect");
-					AddChild(debugRects[enemy]);
+					//AddChild(debugRects[enemy]);
 				}
 				
 				Vector2 sonar_pos = enemy.LocalToOther(enemy.sonar.GetPosition(), this);
