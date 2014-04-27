@@ -86,6 +86,12 @@ public class ScreenManager
 		lastScreen = currentScreen;
 		currentScreen = screen;
 		
+		if(currentScreen == null)
+		{
+			//use an empty one if we weren't given one!
+			currentScreen = new GameScreen();
+		}
+		
 		if(direction == ScreenSourceDirection.Instant) 
 		{
 			if(lastScreen != null)

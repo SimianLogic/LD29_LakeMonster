@@ -1,0 +1,1 @@
+root_width|1024+root_height|768+paper|-3|51+headline|-171|159+pull_quote|383|-79+devoured|299|122+btn_continue_down|332|-326+btn_continue_up|332|-326+CONTINUE|336|-326
