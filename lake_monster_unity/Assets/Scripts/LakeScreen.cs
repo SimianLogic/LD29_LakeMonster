@@ -4,10 +4,12 @@ using System.Collections.Generic;
 
 //TODO: MAYBE PASS LEVEL ID?
 public delegate void GameOverDelegate();
+public delegate void VictoryDelegate();
 
 public class LakeScreen : GameScreen, FSingleTouchableInterface
 {
 	public GameOverDelegate onGameOver;
+	public VictoryDelegate onVictory;
 
 	public const float TENTACLE_GROWTH_SPEED = 0.02f;
 	public const float TENTACLE_GROWTH_RATE = 0.02f;
@@ -309,6 +311,13 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 				}else{
 					hasAHuman = false;
 					fishFood = null;
+					if(humans.Count == 0)
+					{
+						if(onVictory != null)
+						{
+							onVictory();
+						}
+					}
 				}
 			}
 		}
@@ -367,7 +376,7 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 				if(!debugRects.ContainsKey(enemy))
 				{
 					debugRects[enemy] = new FSprite("debug_rect");
-					AddChild(debugRects[enemy]);
+//					AddChild(debugRects[enemy]);
 				}
 				
 				Vector2 sonar_pos = enemy.LocalToOther(enemy.sonar.GetPosition(), this);
@@ -397,15 +406,19 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 			{
 				//first see if we're even in the rect...
 				if(TestCircleRect(tentacle.x, tentacle.y, tentacle.width/2, cached_rects[enemy]))
-				{
-					tentacle.color = RXUtils.GetColorFromHex("ff0000");
-					
+				{		
+					return true;				
 					Vector2 vertex_a = enemy.LocalToOther(enemy.sonar_vert_1, this);
 					Vector2 vertex_b = enemy.LocalToOther(enemy.sonar_vert_2, this);
 					Vector2 vertex_c = enemy.LocalToOther(enemy.sonar_vert_2, this);
 					
-					
-					return true;
+					if(TestPointInTriangle(new Vector2(tentacle.x, tentacle.y), vertex_a, vertex_b, vertex_c))
+					{
+						tentacle.color = RXUtils.GetColorFromHex("ff0000");
+						
+					}else{
+						Debug.Log("HIT THE RECT BUT NOT THE TRI");
+					}
 				}else{
 					tentacle.color = RXUtils.GetColorFromHex("ffffff");
 				}
@@ -414,6 +427,27 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 		}
 		return false;
 	}
+	
+	
+	private bool TestPointInTriangle(Vector2 s_float, Vector2 a_float, Vector2 b_float, Vector2 c_float)
+	{
+		Vector2 s = new Vector2(Mathf.Round(s_float.x), Mathf.Round(s_float.y));
+		Vector2 a = new Vector2(Mathf.Round(a_float.x), Mathf.Round(a_float.y));
+		Vector2 b = new Vector2(Mathf.Round(b_float.x), Mathf.Round(b_float.y));
+		Vector2 c = new Vector2(Mathf.Round(c_float.x), Mathf.Round(c_float.y));
+		
+		float as_x = s.x-a.x;
+		float as_y = s.y-a.y;
+		
+		bool s_ab = (b.x-a.x)*as_y-(b.y-a.y)*as_x > 0;
+		
+		if((c.x-a.x)*as_y-(c.y-a.y)*as_x > 0 == s_ab) return false;
+		
+		if((c.x-b.x)*(s.y-b.y)-(c.y-b.y)*(s.x-b.x) > 0 != s_ab) return false;
+		
+		return true;
+	}
+	
 	
 	//adapted from http://processing.org/discourse/beta/num_1259957186.html
 	private bool TestLineCircle(Vector2 point1, Vector2 point2, float circle_x, float circle_y, float circle_r)

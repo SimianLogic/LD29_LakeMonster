@@ -3,37 +3,31 @@
 *****IMAGES
           root_height       (768,)
           level_background       (0,0)
-          btn_next_down       (362,-229)
-          btn_prev_down       (-364,-229)
-          next       (359,-227)
-          previous       (-369,-226)
-          btn_play1_down       (-306,77)
-          btn_play2_down       (0,77)
-          btn_play3_down       (307,77)
+          btn_play1_down       (-348,175)
+          l1       (-351,177)
+          btn_play2_down       (-116,175)
+          l2       (-121,178)
+          btn_play3_down       (115,175)
+          l3       (108,178)
+          btn_play4_down       (347,175)
+          l4       (342,178)
+          btn_play5_down       (-348,-13)
+          l5       (-354,-10)
+          btn_play6_down       (-116,-13)
+          l6       (-120,-10)
+          btn_play7_down       (115,-13)
+          l7       (113,-11)
+          btn_play8_down       (347,-13)
+          l8       (344,-9)
 
 *****BUTTONS
-          next       (362,-229)
-          prev       (-364,-229)
-          play1       (-306,77)
-          play2       (0,77)
-          play3       (307,77)
+          play1       (-348,175)
+          play2       (-116,175)
+          play3       (115,175)
+          play4       (347,175)
+          play5       (-348,-13)
+          play6       (-116,-13)
+          play7       (115,-13)
+          play8       (347,-13)
 
 *****TEXT FIELDS
-          level1       (-332,80)
-                            COLOR: E9E8A9
-                             FONT: BrushScriptStd
-                    JUSTIFICATION: left
-                        FONT SIZE: 30
-                     DEFAULT TEXT: 1
-          level2       (-37,81)
-                            COLOR: E9E8A9
-                             FONT: BrushScriptStd
-                    JUSTIFICATION: left
-                        FONT SIZE: 30
-                     DEFAULT TEXT: 2
-          level3       (262,81)
-                            COLOR: E9E8A9
-                             FONT: BrushScriptStd
-                    JUSTIFICATION: left
-                        FONT SIZE: 30
-                     DEFAULT TEXT: 3

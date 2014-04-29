@@ -1,0 +1,17 @@
+********** youwin **********
+
+*****IMAGES
+          root_height       (768,)
+          paper       (-3,51)
+          ghetto_mask       (-242,-57)
+          nessy_wins_headline       (-239,154)
+          know_out_there       (392,-75)
+          more_missing       (304,156)
+          polic_baffled       (322,85)
+          btn_continue_down       (364,-327)
+          cont_text       (362,-322)
+
+*****BUTTONS
+          continue       (364,-327)
+
+*****TEXT FIELDS

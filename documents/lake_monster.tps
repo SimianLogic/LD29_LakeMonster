@@ -201,18 +201,12 @@
             <filename>newspaper/paper.png</filename>
             <filename>newspaper/pull_quote.png</filename>
             <filename>levelChooser/background.png</filename>
-            <filename>levelChooser/btn_next_down.png</filename>
-            <filename>levelChooser/btn_next_up.png</filename>
             <filename>levelChooser/btn_play1_down.png</filename>
             <filename>levelChooser/btn_play1_up.png</filename>
             <filename>levelChooser/btn_play2_down.png</filename>
             <filename>levelChooser/btn_play2_up.png</filename>
             <filename>levelChooser/btn_play3_down.png</filename>
             <filename>levelChooser/btn_play3_up.png</filename>
-            <filename>levelChooser/btn_prev_down.png</filename>
-            <filename>levelChooser/btn_prev_up.png</filename>
-            <filename>levelChooser/next.png</filename>
-            <filename>levelChooser/previous.png</filename>
             <filename>greetings_lochness_cleanup/btn_start_down.png</filename>
             <filename>greetings_lochness_cleanup/btn_start_up.png</filename>
             <filename>greetings_lochness_cleanup/screen.png</filename>
@@ -223,6 +217,37 @@
             <filename>newspaper/btn_back_down.png</filename>
             <filename>newspaper/btn_back_up.png</filename>
             <filename>newspaper/Continue.png</filename>
+            <filename>levelChooser/btn_play4_down.png</filename>
+            <filename>levelChooser/btn_play4_up.png</filename>
+            <filename>levelChooser/btn_play5_down.png</filename>
+            <filename>levelChooser/btn_play5_up.png</filename>
+            <filename>levelChooser/btn_play6_down.png</filename>
+            <filename>levelChooser/btn_play6_up.png</filename>
+            <filename>levelChooser/btn_play7_down.png</filename>
+            <filename>levelChooser/btn_play7_up.png</filename>
+            <filename>levelChooser/btn_play8_down.png</filename>
+            <filename>levelChooser/btn_play8_up.png</filename>
+            <filename>levelChooser/l1.png</filename>
+            <filename>levelChooser/l2.png</filename>
+            <filename>levelChooser/l3.png</filename>
+            <filename>levelChooser/l4.png</filename>
+            <filename>levelChooser/l5.png</filename>
+            <filename>levelChooser/l6.png</filename>
+            <filename>levelChooser/l7.png</filename>
+            <filename>levelChooser/l8.png</filename>
+            <filename>youwin/btn_continue_down.png</filename>
+            <filename>youwin/btn_continue_up.png</filename>
+            <filename>youwin/Continue.png</filename>
+            <filename>youwin/devoured.png</filename>
+            <filename>youwin/ghetto_mask.png</filename>
+            <filename>youwin/headline.png</filename>
+            <filename>youwin/paper.png</filename>
+            <filename>youwin/pull_quote.png</filename>
+            <filename>youwin/cont_text.png</filename>
+            <filename>youwin/know_out_there.png</filename>
+            <filename>youwin/more_missing.png</filename>
+            <filename>youwin/nessy_wins_headline.png</filename>
+            <filename>youwin/polic_baffled.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
