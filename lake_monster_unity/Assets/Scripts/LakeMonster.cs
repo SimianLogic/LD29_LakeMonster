@@ -69,25 +69,18 @@ public class LakeMonster : MonoBehaviour
 		if(levels == null)
 		{
 			levels = new GameScreen("levelChooser");
-			levels.buttons["next"].SignalRelease += handleLevelNext;
-			levels.buttons["prev"].SignalRelease += handleLevelPrev;
 			levels.buttons["play1"].SignalRelease += handleLevelStart;
 			levels.buttons["play2"].SignalRelease += handleLevelStart;
 			levels.buttons["play3"].SignalRelease += handleLevelStart;
+			levels.buttons["play4"].SignalRelease += handleLevelStart;
+			levels.buttons["play5"].SignalRelease += handleLevelStart;
+			levels.buttons["play6"].SignalRelease += handleLevelStart;
+			levels.buttons["play7"].SignalRelease += handleLevelStart;
+			levels.buttons["play8"].SignalRelease += handleLevelStart;
 		}
 		
 		state = STATE_LEVELS;
 		ScreenManager.loadScreen(levels, ScreenSourceDirection.Right);
-	}
-	
-	public void handleLevelNext(FButton button)
-	{
-		Debug.Log ("NEXT");
-	}
-	
-	public void handleLevelPrev(FButton button)
-	{
-		Debug.Log ("PREV");
 	}
 	
 	public void handleLevelStart(FButton button)
@@ -97,8 +90,18 @@ public class LakeMonster : MonoBehaviour
 			playGame(1);
 		}else if(button == levels.buttons["play2"]){
 			playGame(2);
-		}else{
+		}else if(button == levels.buttons["play3"]){
 			playGame(3);
+		}else if(button == levels.buttons["play4"]){
+			playGame(4);
+		}else if(button == levels.buttons["play5"]){
+			playGame(5);
+		}else if(button == levels.buttons["play6"]){
+			playGame(6);
+		}else if(button == levels.buttons["play7"]){
+			playGame(7);
+		}else if(button == levels.buttons["play8"]){
+			playGame(8);
 		}
 	}
 	
@@ -108,6 +111,7 @@ public class LakeMonster : MonoBehaviour
 		{
 			lake = new LakeScreen();
 			lake.onGameOver += handleGameOver;
+			lake.onVictory += handleVictory;
 		}
 		
 		state = STATE_GAMEPLAY;
@@ -116,7 +120,9 @@ public class LakeMonster : MonoBehaviour
 		lake.startLevel(level);
 		
 		lake.y = lake.rootHeight/2 - Futile.screen.halfHeight - 200;
-		//lake.y = Futile.screen.halfHeight - lake.rootHeight/2;
+
+//		lake.y = Futile.screen.halfHeight - lake.rootHeight/2;
+
 		Futile.stage.AddChild(lake);
 		lake.MoveToBack();
 		
@@ -137,6 +143,19 @@ public class LakeMonster : MonoBehaviour
 		
 		state = STATE_GAMEOVER;	
 		ScreenManager.loadScreen(gameOverScreen, ScreenSourceDirection.Right);
+	}
+	
+	private GameScreen victoryScreen;
+	public void handleVictory()
+	{
+		if(victoryScreen == null)
+		{
+			victoryScreen = new GameScreen("youwin");
+			victoryScreen.buttons["continue"].SignalRelease += handleContinue;
+		}
+		
+		state = STATE_GAMEOVER;	
+		ScreenManager.loadScreen(victoryScreen, ScreenSourceDirection.Right);
 	}
 	
 	public void handleContinue(FButton button)
