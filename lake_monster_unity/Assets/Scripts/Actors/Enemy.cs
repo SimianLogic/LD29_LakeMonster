@@ -5,47 +5,39 @@ using System.Collections.Generic;
 
 public class Enemy : Actor
 {
-	public FSprite sonar;
-	
-	public Vector2 sonar_vert_1;
-	public Vector2 sonar_vert_2;
-	public Vector2 sonar_vert_3;
+	public string sonarName;
+	public MetaContainer full_sonar;
+	public FSprite sonar
+	{
+		get
+		{
+			return full_sonar.images[sonarName];
+		}
+	}
 
 	public Enemy(string name, List<PatrolStep> steps):base(name, steps)
 	{
-
-		sonar = new FSprite (name + "_sonar");
+		sonarName = name + "_sonar";
+		full_sonar = new MetaContainer(sonarName);
 		AddChild (sonar);
 
 		switch(name)
 		{
 			case "boat1":
-				sonar.y = -165f;
-				sonar.x = -14f;
-				sonar_vert_1 = new Vector2(sonar.x, sonar.y + sonar.height/2);
-				sonar_vert_2 = new Vector2(sonar.x + sonar.width/2, sonar.y - sonar.height/2);
-				sonar_vert_3 = new Vector2(sonar.x - sonar.width/2, sonar.y - sonar.height/2);
+				full_sonar.y = -165f;
+				full_sonar.x = -14f;
 				break;
 			case "boat2":
-				sonar.y = -91f;
-				sonar.x = -7f;
-				sonar_vert_1 = new Vector2(sonar.x, sonar.y + sonar.height/2);
-				sonar_vert_2 = new Vector2(sonar.x + sonar.width/2, sonar.y - sonar.height/2);
-				sonar_vert_3 = new Vector2(sonar.x - sonar.width/2, sonar.y - sonar.height/2);
+				full_sonar.y = -91f;
+				full_sonar.x = -7f;
 				break;
 			case "sub1":
-				sonar.y = 4f;
-				sonar.x = -175f;
-				sonar_vert_1 = new Vector2(sonar.x + sonar.width/2, sonar.y);
-				sonar_vert_2 = new Vector2(sonar.x - sonar.width/2, sonar.y - sonar.height/2);
-				sonar_vert_3 = new Vector2(sonar.x - sonar.width/2, sonar.y + sonar.height/2);
+				full_sonar.y = 4f;
+				full_sonar.x = -175f;
 				break;
 			case "sub2":
-				sonar.y = 4f;
-				sonar.x = -105f;
-				sonar_vert_1 = new Vector2(sonar.x + sonar.width/2, sonar.y);
-				sonar_vert_2 = new Vector2(sonar.x - sonar.width/2, sonar.y - sonar.height/2);
-				sonar_vert_3 = new Vector2(sonar.x - sonar.width/2, sonar.y + sonar.height/2);
+				full_sonar.y = 4f;
+				full_sonar.x = -105f;
 				break;
 			default:
 				break;
