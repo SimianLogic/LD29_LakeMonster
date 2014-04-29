@@ -248,6 +248,29 @@
             <filename>youwin/more_missing.png</filename>
             <filename>youwin/nessy_wins_headline.png</filename>
             <filename>youwin/polic_baffled.png</filename>
+            <filename>boat1_sonar/b1_1.png</filename>
+            <filename>boat1_sonar/b1_2.png</filename>
+            <filename>boat1_sonar/b1_3.png</filename>
+            <filename>boat1_sonar/b1_4.png</filename>
+            <filename>boat1_sonar/b1_5.png</filename>
+            <filename>boat1_sonar/b1_6.png</filename>
+            <filename>boat1_sonar/boat1_sonar.png</filename>
+            <filename>boat2_sonar/b2_1.png</filename>
+            <filename>boat2_sonar/b2_2.png</filename>
+            <filename>boat2_sonar/b2_3.png</filename>
+            <filename>boat2_sonar/b2_4.png</filename>
+            <filename>boat2_sonar/boat2_sonar.png</filename>
+            <filename>sub1_sonar/s1_1.png</filename>
+            <filename>sub1_sonar/s1_2.png</filename>
+            <filename>sub1_sonar/s1_3.png</filename>
+            <filename>sub1_sonar/s1_4.png</filename>
+            <filename>sub1_sonar/s1_5.png</filename>
+            <filename>sub1_sonar/sub1_sonar.png</filename>
+            <filename>sub2_sonar/s2_1.png</filename>
+            <filename>sub2_sonar/s2_2.png</filename>
+            <filename>sub2_sonar/s2_3.png</filename>
+            <filename>sub2_sonar/s2_4.png</filename>
+            <filename>sub2_sonar/sub2_sonar.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

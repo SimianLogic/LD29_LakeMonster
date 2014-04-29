@@ -1,0 +1,1 @@
+root_width|170+root_height|74+sub2_sonar|0|0+s2_1|2|8+s2_2|-15|16+s2_3|-20|0+s2_4|-31|-8
