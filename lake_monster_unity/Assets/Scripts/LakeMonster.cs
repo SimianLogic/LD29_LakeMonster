@@ -115,12 +115,12 @@ public class LakeMonster : MonoBehaviour
 		currentLevel = level;
 		lake.startLevel(level);
 		
-		//		lake.y = lake.rootHeight/2 - Futile.screen.halfHeight - 500;
-		lake.y = Futile.screen.halfHeight - lake.rootHeight/2;
+		lake.y = lake.rootHeight/2 - Futile.screen.halfHeight - 200;
+		//lake.y = Futile.screen.halfHeight - lake.rootHeight/2;
 		Futile.stage.AddChild(lake);
 		lake.MoveToBack();
 		
-		//Go.to(lake, 5.0f, new TweenConfig().floatProp("y", Futile.screen.halfHeight - lake.rootHeight/2).setEaseType(EaseType.ExpoInOut).setDelay(0.1f));
+		Go.to(lake, 5.0f, new TweenConfig().floatProp("y", Futile.screen.halfHeight - lake.rootHeight/2).setEaseType(EaseType.ExpoInOut).setDelay(0.1f));
 		
 		ScreenManager.loadScreen(null, ScreenSourceDirection.Left);
 	}
