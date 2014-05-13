@@ -38,7 +38,7 @@
         <key>dataFormat</key>
         <string>unity</string>
         <key>textureFileName</key>
-        <filename>../lake_monster_unity/Assets/Resources/Atlases/lake_monster.png</filename>
+        <filename>../lake_monster_unity/Assets/Resources/Atlases/lake_monster2.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -56,7 +56,7 @@
             </struct>
         </struct>
         <key>shapePadding</key>
-        <uint>3</uint>
+        <uint>5</uint>
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
@@ -68,7 +68,7 @@
         <key>textureFormat</key>
         <enum type="SettingsBase::TextureFormat">png</enum>
         <key>borderPadding</key>
-        <uint>3</uint>
+        <uint>5</uint>
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
@@ -131,7 +131,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../lake_monster_unity/Assets/Resources/Atlases/lake_monster.txt</filename>
+                <filename>../lake_monster_unity/Assets/Resources/Atlases/lake_monster2.txt</filename>
             </struct>
             <key>datafile</key>
             <struct type="DataFile">

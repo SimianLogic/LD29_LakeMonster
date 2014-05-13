@@ -34,7 +34,7 @@ public class LakeMonster : MonoBehaviour
 		
 		Futile.instance.Init(fparams);
 		
-		Futile.atlasManager.LoadAtlas("Atlases/lake_monster");
+		Futile.atlasManager.LoadAtlas("Atlases/lake_monster2");
 		Futile.atlasManager.LogAllElementNames();
 		
 		MetaContainer.loadFont("Arial-Black",120,"arial_black_120","Atlases/arial_black_120",0f,0f);

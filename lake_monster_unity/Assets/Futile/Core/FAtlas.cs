@@ -120,7 +120,7 @@ public class FAtlas
 	
 	private void LoadTexture()
 	{
-		_texture = Resources.Load (_imagePath, typeof(Texture)) as Texture;
+		_texture = Resources.Load(_imagePath, typeof(Texture)) as Texture;
 		 
 		if(_texture == null)
 		{
