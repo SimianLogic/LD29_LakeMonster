@@ -5,11 +5,11 @@ using System.Collections.Generic;
 
 public class Actor : FContainer
 {
-	public List<PatrolStep> steps;
+	public List<Step> steps;
 	public int stepIndex;
 	public FSprite body;
 
-	public Actor(string name, List<PatrolStep> steps):base()
+	public Actor(string name, List<Step> steps):base()
 	{
 		this.steps = steps;
 		body = new FSprite (name);
@@ -24,7 +24,72 @@ public class Actor : FContainer
 		if(steps == null) return;
 
 		float dt = Time.deltaTime;
-		PatrolStep step = steps [stepIndex];
+		Step step = steps [stepIndex];
+		
+		if(step is TurnStep)
+		{	
+			handleTurnStep(step as TurnStep, dt);
+		}else if(step is PatrolStep){
+			handlePatrolStep(step as PatrolStep, dt);
+		}
+	}
+	
+	//relative to current stepIndex
+	private Step GetStepWithIndex(int index)
+	{
+		int which = stepIndex + index;
+		while(which < 0) which += steps.Count;
+		while(which >= steps.Count) which -= steps.Count;
+		
+		return steps[which];
+	}
+	
+	
+	public virtual float prevScale
+	{
+		get
+		{
+			if(GetStepWithIndex(-1) is PatrolStep)
+			{
+				return (float)(GetStepWithIndex(-1) as PatrolStep).facingDirection;
+			}else{
+				return 0f;
+			}
+		}
+	}
+	
+	public virtual float nextScale
+	{
+		get
+		{
+			if(GetStepWithIndex(1) is PatrolStep)
+			{
+				return (float)(GetStepWithIndex(1) as PatrolStep).facingDirection;
+			}else{
+				return 0f;
+			}
+		}
+	}
+	
+	public virtual void handleTurnStep(TurnStep step, float dt)
+	{
+	
+		if(prevScale > nextScale)
+		{
+			this.scaleX = Mathf.Max(nextScale, this.scaleX - dt/step.durationInSeconds);
+		}else{
+		 	this.scaleX = Mathf.Min(nextScale, this.scaleX + dt/step.durationInSeconds);
+		}
+		
+		if(this.scaleX == nextScale)
+		{
+			nextStep();
+		}
+		
+	}
+	
+	public virtual void handlePatrolStep(PatrolStep step, float dt)
+	{
 		float vx = step.velocityVector.x * dt;
 		float vy = step.velocityVector.y * dt;
 		
@@ -45,10 +110,10 @@ public class Actor : FContainer
 		}
 		
 		
-		if (Mathf.Abs(x-step.endPos.x) <=1 && Mathf.Abs(y-step.endPos.y) <=1){
+		if (Mathf.Abs(x-step.endPos.x) <=1 && Mathf.Abs(y-step.endPos.y) <=1)
+		{
 			nextStep ();
 		}
-		
 	}
 
 	public void nextStep()
@@ -56,13 +121,21 @@ public class Actor : FContainer
 		if(steps == null) return;
 
 		stepIndex = (stepIndex + 1) % steps.Count;
-		x = steps [stepIndex].startPos.x;
-		y = steps [stepIndex].startPos.y;
 		
-		if( (scaleX < 0 && steps [stepIndex].facingDirection > 0) || (scaleX > 0 && steps [stepIndex].facingDirection < 0))
+		Step step = steps[stepIndex];
+		if(step is PatrolStep)
 		{
-			scaleX = scaleX * -1;
+			PatrolStep patrol = step as PatrolStep;
+			x = patrol.startPos.x;
+			y = patrol.startPos.y;
+			
+			if( (scaleX < 0 && patrol.facingDirection > 0) || (scaleX > 0 && patrol.facingDirection < 0))
+			{
+				scaleX = scaleX * -1;
+			}
 		}
+		
+		
 	}
 
 }

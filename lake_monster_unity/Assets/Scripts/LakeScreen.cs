@@ -14,7 +14,7 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 	public const float TENTACLE_GROWTH_SPEED = 0.02f;
 	public const float TENTACLE_GROWTH_RATE = 0.02f;
 	public const float TENTACLE_MAX_TURN_ANGLE = 45f;
-	public const float TENTACLE_BONE_LENGTH = 0.45f;
+	public const float TENTACLE_BONE_LENGTH = 0.45f;	
 	public const int MAX_TENTACLE_PIECES = 75;
 	
 	public List<Enemy> enemies;
@@ -22,7 +22,7 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 	
 	public Dictionary<Actor,FSprite> debugRects;
 	
-	public List<FSprite> tentaclePieces;
+	private List<TentaclePiece> tentaclePieces;
 	
 	public bool isDragging;
 	public float lastX;
@@ -37,10 +37,15 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 	public FContainer midground;
 	public FContainer background;
 	
+	public static float BONE_LENGTH;
+	
 
 	public LakeScreen() : base("monster_pieces")
 	{
 		EnableSingleTouch();
+		
+		FAtlasElement tentacle = Futile.atlasManager.GetElementWithName("tentacle");
+		BONE_LENGTH = tentacle.sourceSize.y * TENTACLE_BONE_LENGTH;
 
 		foreground = new FContainer ();
 		midground  = new FContainer ();
@@ -54,7 +59,7 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 		humans =  new List<Human> ();
 		debugRects = new Dictionary<Actor, FSprite>();
 
-		tentaclePieces = new List<FSprite>();
+		tentaclePieces = new List<TentaclePiece>();
 		
 		depthY = rootHeight/2 - Futile.screen.height - 50;
 	}
@@ -115,7 +120,7 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 		foreground.AddChild (human1);
 		humans.Add (human1);
 
-		List<List<PatrolStep>> allPaths = LevelActorPaths.GetLevel1_Enemies ();
+		List<List<Step>> allPaths = LevelActorPaths.GetLevel1_Enemies ();
 
 		Enemy boat1 = new Enemy ("boat2", allPaths[0]);
 		midground.AddChild (boat1);
@@ -137,7 +142,7 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 		foreground.AddChild (human2);
 		humans.Add (human2);
 
-		List<List<PatrolStep>> allPaths = LevelActorPaths.GetLevel2_Enemies ();
+		List<List<Step>> allPaths = LevelActorPaths.GetLevel2_Enemies ();
 
 		Enemy boat1 = new Enemy ("boat2", allPaths[0]);
 		midground.AddChild (boat1);
@@ -154,7 +159,7 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 	{
 		clearMe ();
 
-		List<List<PatrolStep>> allHumanPaths = LevelActorPaths.GetLevel3_Humans();
+		List<List<Step>> allHumanPaths = LevelActorPaths.GetLevel3_Humans();
 
 		Human human1 = new Human ("person", new Vector2(300, 820));
 		background.AddChild (human1);
@@ -166,7 +171,7 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 		foreground.AddChild (human3);
 		humans.Add (human3);
 		
-		List<List<PatrolStep>> allEnemyPaths = LevelActorPaths.GetLevel3_Enemies ();
+		List<List<Step>> allEnemyPaths = LevelActorPaths.GetLevel3_Enemies ();
 		
 		Enemy boat1 = new Enemy ("boat1", allEnemyPaths[0]);
 		midground.AddChild (boat1);
@@ -186,7 +191,7 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 	{
 		clearMe ();
 		
-		List<List<PatrolStep>> allHumanPaths = LevelActorPaths.GetLevel4_Humans();
+		List<List<Step>> allHumanPaths = LevelActorPaths.GetLevel4_Humans();
 		
 		Human human1 = new Human ("person", new Vector2(300, 820));
 		background.AddChild (human1);
@@ -201,7 +206,7 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 		foreground.AddChild (human4);
 		humans.Add (human4);
 		
-		List<List<PatrolStep>> allEnemyPaths = LevelActorPaths.GetLevel4_Enemies ();
+		List<List<Step>> allEnemyPaths = LevelActorPaths.GetLevel4_Enemies ();
 		
 		Enemy boat1 = new Enemy ("boat1", allEnemyPaths[0]);
 		midground.AddChild (boat1);
@@ -221,7 +226,7 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 	{
 		clearMe ();
 		
-		List<List<PatrolStep>> allHumanPaths = LevelActorPaths.GetLevel5_Humans();
+		List<List<Step>> allHumanPaths = LevelActorPaths.GetLevel5_Humans();
 		
 		Human human1 = new Human ("person", new Vector2(250, 815));
 		background.AddChild (human1);
@@ -239,7 +244,7 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 		background.AddChild (human5);
 		humans.Add (human5);
 
-		List<List<PatrolStep>> allEnemyPaths = LevelActorPaths.GetLevel5_Enemies ();
+		List<List<Step>> allEnemyPaths = LevelActorPaths.GetLevel5_Enemies ();
 		
 		Enemy boat1 = new Enemy ("boat1", allEnemyPaths[0]);
 		midground.AddChild (boat1);
@@ -265,7 +270,7 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 		background.AddChild (human1);
 
 		float human2Y = 790f;
-		List<PatrolStep> steps1= new List<PatrolStep> ();
+		List<Step> steps1= new List<Step> ();
 		steps1.Add (new PatrolStep (new Vector2 (-150, human2Y), new Vector2 (50, human2Y), 5f, -1));
 		steps1.Add (new PatrolStep (new Vector2 (50, human2Y), new Vector2 (-150, human2Y), 5f, 1));
 
@@ -273,7 +278,7 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 		foreground.AddChild (human2);
 
 		float human3Y = 500f;
-		List<PatrolStep> steps2= new List<PatrolStep> ();
+		List<Step> steps2= new List<Step> ();
 		steps2.Add (new PatrolStep (new Vector2 (150, human3Y+10), new Vector2 (-100, human3Y-10), 15f, 1));
 		steps2.Add (new PatrolStep (new Vector2 (-100, human3Y-10), new Vector2 (150, human3Y+10), 15f, -1));
 
@@ -290,7 +295,7 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 	public void InitEnemies()
 	{
 		float boat1Y = 800f;
-		List<PatrolStep> steps1= new List<PatrolStep> ();
+		List<Step> steps1= new List<Step> ();
 		steps1.Add (new PatrolStep (new Vector2 (-400, boat1Y), new Vector2 (400, boat1Y), 30f, -1));
 		steps1.Add (new PatrolStep (new Vector2 (400, boat1Y), new Vector2 (-400, boat1Y), 30f, 1));
 		
@@ -298,7 +303,7 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 		midground.AddChild (boat1);
 		
 		float boat2Y = 785f;
-		List<PatrolStep> steps2 = new List<PatrolStep> ();
+		List<Step> steps2 = new List<Step> ();
 		steps2.Add (new PatrolStep (new Vector2 (200, boat2Y), new Vector2 (-400, boat2Y), 40f, 1));
 		steps2.Add (new PatrolStep (new Vector2 (-400, boat2Y), new Vector2 (200, boat2Y), 40f, -1));
 		
@@ -306,7 +311,7 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 		midground.AddChild (boat2);
 		
 		float sub1Y = 405f;
-		List<PatrolStep> steps3 = new List<PatrolStep> ();
+		List<Step> steps3 = new List<Step> ();
 		steps3.Add (new PatrolStep (new Vector2 (450, sub1Y+50), new Vector2 (-50, sub1Y-100), 20f, 1));
 		steps3.Add (new PatrolStep (new Vector2 (-50, sub1Y-100), new Vector2 (450, sub1Y+50), 20f, -1));
 		
@@ -314,7 +319,7 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 		midground.AddChild (sub1);
 		
 		float sub2Y = 400f;
-		List<PatrolStep> steps4= new List<PatrolStep> ();
+		List<Step> steps4= new List<Step> ();
 		steps4.Add (new PatrolStep (new Vector2 (-440, sub2Y-50), new Vector2 (100, sub2Y+100), 50f, -1));
 		steps4.Add (new PatrolStep (new Vector2 (100, sub2Y+100), new Vector2 (-440, sub2Y-50), 50f, 1));
 		
@@ -438,29 +443,47 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 		}
 		
 		
-		foreach(FSprite tentacle in tentaclePieces)
+		foreach(TentaclePiece tentacle in tentaclePieces)
 		{
+			bool got_one = false;
 			foreach(Enemy enemy in enemies)
 			{
 				//first see if we're even in the rect...
 				if(TestCircleRect(tentacle.x, tentacle.y, tentacle.width/2, cached_rects[enemy]))
 				{		
-					return true;
-
+					Vector2 vertex_a = enemy.LocalToOther(enemy.sonar_vert_1, this);
+					Vector2 vertex_b = enemy.LocalToOther(enemy.sonar_vert_2, this);
+					Vector2 vertex_c = enemy.LocalToOther(enemy.sonar_vert_3, this);
 					
-					
-					tentacle.color = RXUtils.GetColorFromHex("ff0000");
-						
-					
-				}else{
-					tentacle.color = RXUtils.GetColorFromHex("ffffff");
+					if(TestPointInTriangle(vertex_a.x, vertex_a.y, vertex_b.x, vertex_b.y, vertex_c.x, vertex_c.y, tentacle.tipX, tentacle.tipY))
+					{
+						got_one = true;
+						return true;
+					}
 				}
-				
+			}
+			
+			if(got_one)
+			{
+				tentacle.color = RXUtils.GetColorFromHex("ff0000");
+			}else{
+				tentacle.color = RXUtils.GetColorFromHex("ffffff");
 			}
 		}
+		
 		return false;
 	}
-
+	
+	private bool TestPointInTriangle(float x1, float y1, float x2, float y2, float x3, float y3, float x, float y)
+	{
+		float denominator = ((y2 - y3)*(x1 - x3) + (x3 - x2)*(y1 - y3));
+		float a = ((y2 - y3)*(x - x3) + (x3 - x2)*(y - y3)) / denominator;
+		float b = ((y3 - y1)*(x - x3) + (x1 - x3)*(y - y3)) / denominator;
+		float c = 1 - a - b;
+		
+		return 0 <= a && a <= 1 && 0 <= b && b <= 1 && 0 <= c && c <= 1;
+	}
+	
 	private bool TestCircleRect(float circle_x, float circle_y, float circle_r, Rect rect)
 	{
 		//http://stackoverflow.com/questions/401847/circle-rectangle-collision-detection-intersection
@@ -492,8 +515,8 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 		}
 		lastUpdate = Time.time;
 		
-		FSprite last = tentaclePieces[tentaclePieces.Count - 1];
-		tentaclePieces.Remove (last);
+		TentaclePiece last = tentaclePieces.GetLastObject();
+		tentaclePieces.Remove(last);
 		last.RemoveFromContainer();
 		
 		UpdateTentacle();
@@ -509,40 +532,21 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 		
 		float tip_x, tip_y;
 		
-		FAtlasElement tentacle = Futile.atlasManager.GetElementWithName("tentacle");
-		float bone_length = tentacle.sourceSize.y * TENTACLE_BONE_LENGTH;
-		
 		if(tentaclePieces.Count == 0)
 		{
 			tip_x = lastX;
 			tip_y = depthY;
 		}else{
-			float tx = tentaclePieces.GetLastObject().x;
-			float ty = tentaclePieces.GetLastObject().y;
-			
-			float rotation = tentaclePieces.GetLastObject().rotation * RXMath.DTOR;
-			
-			tip_x = tx + Mathf.Cos(rotation)*bone_length;
-			tip_y = ty + -1*Mathf.Sin(rotation)*bone_length;
+			tip_x = tentaclePieces.GetLastObject().tipX;
+			tip_y = tentaclePieces.GetLastObject().tipY;
 		}
 		
 		//might also want to add a time component so we don't insta-grow
 		Vector2 delta = new Vector2(lastX - tip_x, lastY - tip_y);
-		if(delta.magnitude > bone_length)
+		if(delta.magnitude > BONE_LENGTH)
 		{
 			if(tentaclePieces.Count < MAX_TENTACLE_PIECES)
-			{
-				//add a new bone and point it at lastX/lastY
-				FSprite bone = new FSprite("tentacle");
-				AddChild(bone);
-				
-				tentaclePieces.Add(bone);
-				bone.x = tip_x;
-				bone.y = tip_y;
-				bone.anchorX = 0.0f;
-				
-				UpdateTentacle();
-				
+			{				
 				//y-positive, invert the y
 				float angle = Mathf.Atan2(delta.y*-1, delta.x)*RXMath.RTOD;
 				
@@ -559,7 +563,14 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 					}
 				}
 				
-				bone.rotation = angle;
+				TentaclePiece bone = new TentaclePiece(angle);
+				tentaclePieces.Add(bone);
+				AddChild(bone);
+				
+				bone.x = tip_x;
+				bone.y = tip_y;
+				
+				UpdateTentacle();
 			}
 		}
 	}
@@ -602,5 +613,39 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 		isDragging = false;
 	}
 
+}
+
+
+class TentaclePiece : FSprite
+{
+	private float _tipXOffset;
+	private float _tipYOffset;
+	
+	public float tipX
+	{
+		get
+		{
+			return x + _tipXOffset*scaleX;
+		}
+	}
+	public float tipY
+	{
+		get
+		{
+			return y + _tipYOffset*scaleY;
+		}
+	}
+	
+	public TentaclePiece(float angle):base("tentacle")
+	{
+		this.anchorX = 0.0f;			
+		this.rotation = angle;
+		
+		//FSprite and cos/sin don't sue the same coords...
+		float rotation = angle * RXMath.DTOR;
+		
+		_tipXOffset = Mathf.Cos(rotation)*LakeScreen.BONE_LENGTH;
+		_tipYOffset = -1*Mathf.Sin(rotation)*LakeScreen.BONE_LENGTH;
+	}
 }
 
