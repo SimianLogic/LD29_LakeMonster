@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class Human : Actor
 {
 
-	public Human(string name, List<PatrolStep> steps):base(name, steps)
+	public Human(string name, List<Step> steps):base(name, steps)
 	{
 	}
 

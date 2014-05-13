@@ -77,6 +77,10 @@ public class LakeMonster : MonoBehaviour
 			levels.buttons["play6"].SignalRelease += handleLevelStart;
 			levels.buttons["play7"].SignalRelease += handleLevelStart;
 			levels.buttons["play8"].SignalRelease += handleLevelStart;
+			
+			levels.buttons["play6"].isVisible = false;
+			levels.buttons["play7"].isVisible = false;
+			levels.buttons["play8"].isVisible = false;
 		}
 		
 		state = STATE_LEVELS;
