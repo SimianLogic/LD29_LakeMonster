@@ -193,5 +193,75 @@ public class LevelActorPaths
 		return allPaths;
 	}
 
+	public static List<List<PatrolStep>> GetLevel5_Humans()
+	{
+		List<List<PatrolStep>> allPaths = new List<List<PatrolStep>> ();
+		
+		float y = 790f;
+		List<PatrolStep> steps= new List<PatrolStep> ();
+		steps.Add (new PatrolStep (new Vector2 (-450, y), new Vector2 (150, y), 5f, -1));
+		steps.Add (new PatrolStep (new Vector2 (150, y), new Vector2 (-450, y), 5f, 1));
+		
+		float y2 = 720f;
+		List<PatrolStep> steps2= new List<PatrolStep> ();
+		steps2.Add (new PatrolStep (new Vector2 (-400, y2), new Vector2 (150, y2-40), 15f, -1));
+		steps2.Add (new PatrolStep (new Vector2 (150, y2-40), new Vector2 (-20, y2-100), 15f, 1));
+		steps2.Add (new PatrolStep (new Vector2 (-20, y2-100), new Vector2 (-400, y2), 15f, 1));
+		
+		float y3 = 590f;
+		List<PatrolStep> steps3= new List<PatrolStep> ();
+		steps3.Add (new PatrolStep (new Vector2 (-80, y3+90), new Vector2 (-200, y3-20), 20f, 1));
+		steps3.Add (new PatrolStep (new Vector2 (-200, y3-20), new Vector2 (250, y3), 20f, -1));
+		steps3.Add (new PatrolStep (new Vector2 (250, y3), new Vector2 (-80, y3+90), 20f, 1));
+		
+		allPaths.Add (steps);
+		allPaths.Add (steps2);
+		allPaths.Add (steps3);
+		return allPaths;
+	}
+	
+	public static List<List<PatrolStep>> GetLevel5_Enemies()
+	{
+		List<List<PatrolStep>> allPaths = new List<List<PatrolStep>> ();
+		
+		float y = 795f;
+		List<PatrolStep> steps= new List<PatrolStep> ();
+		steps.Add (new PatrolStep (new Vector2 (450, y), new Vector2 (-400, y), 30f, 1));
+		steps.Add (new PatrolStep (new Vector2 (-400, y), new Vector2 (450, y), 30f, -1));
+		
+		float y2 = 790f;
+		List<PatrolStep> steps2= new List<PatrolStep> ();
+		steps2.Add (new PatrolStep (new Vector2 (-300, y2), new Vector2 (250, y2), 60f, -1));
+		steps2.Add (new PatrolStep (new Vector2 (250, y2), new Vector2 (-300, y2), 60f, 1));
+		
+		float y3 = 670f;
+		List<PatrolStep> steps3= new List<PatrolStep> ();
+		steps3.Add (new PatrolStep (new Vector2 (-450, y3-60), new Vector2 (450, y3+10), 30f, -1));
+		steps3.Add (new PatrolStep (new Vector2 (450, y3+10),  new Vector2 (400, y3+90), 30f, 1));
+		steps3.Add (new PatrolStep (new Vector2 (400, y3+90),  new Vector2 (-400, y3), 30f, 1));
+		steps3.Add (new PatrolStep (new Vector2 (-400, y3),  new Vector2 (-450, y3-60), 30f, -1));
+		
+		float y4 = 595f;
+		List<PatrolStep> steps4= new List<PatrolStep> ();
+		steps4.Add (new PatrolStep (new Vector2 (450, y4+80), new Vector2 (-350, y4-50), 50f, 1));
+		steps4.Add (new PatrolStep (new Vector2 (-350, y4-50), new Vector2 (-350, y4+90), 50f, -1));
+		steps4.Add (new PatrolStep (new Vector2 (-350, y4+90), new Vector2 (450, y4-60), 50f, -1));
+		steps4.Add (new PatrolStep (new Vector2 (450, y4-60), new Vector2 (450, y4+80), 50f, 1));		
+
+		float y5 = 500f;
+		List<PatrolStep> steps5= new List<PatrolStep> ();
+		steps5.Add (new PatrolStep (new Vector2 (250, y5-30), new Vector2 (-250, y5+10), 60f, 1));
+		steps5.Add (new PatrolStep (new Vector2 (-250, y5+10), new Vector2 (250, y5-30), 60f, -1));
+
+
+		allPaths.Add (steps);
+		allPaths.Add (steps2);
+		allPaths.Add (steps3);
+		allPaths.Add (steps4);
+		allPaths.Add (steps5);
+
+		return allPaths;
+	}
+
 }
 

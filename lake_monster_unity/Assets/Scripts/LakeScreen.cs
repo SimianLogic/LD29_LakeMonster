@@ -76,6 +76,9 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 			case 4:
 				InitLevel4();
 				break;				
+			case 5:
+				InitLevel5();
+				break;	
 			default:
 				Debug.Log ("NO LEVEL " + which);
 				break;
@@ -212,6 +215,47 @@ public class LakeScreen : GameScreen, FSingleTouchableInterface
 		Enemy boat4 = new Enemy ("sub2", allEnemyPaths[3]);
 		midground.AddChild (boat4);
 		enemies.Add (boat4);
+	}
+
+	public void InitLevel5()
+	{
+		clearMe ();
+		
+		List<List<PatrolStep>> allHumanPaths = LevelActorPaths.GetLevel5_Humans();
+		
+		Human human1 = new Human ("person", new Vector2(250, 815));
+		background.AddChild (human1);
+		humans.Add (human1);	
+		Human human2 = new Human ("person_boat", allHumanPaths[0]);
+		foreground.AddChild (human2);
+		humans.Add (human2);
+		Human human3 = new Human ("person_scuba", allHumanPaths[1]);
+		foreground.AddChild (human3);
+		humans.Add (human3);
+		Human human4 = new Human ("person_scuba", allHumanPaths[2]);
+		foreground.AddChild (human4);
+		humans.Add (human4);
+		Human human5 = new Human ("person", new Vector2(400, 820));
+		background.AddChild (human5);
+		humans.Add (human5);
+
+		List<List<PatrolStep>> allEnemyPaths = LevelActorPaths.GetLevel5_Enemies ();
+		
+		Enemy boat1 = new Enemy ("boat1", allEnemyPaths[0]);
+		midground.AddChild (boat1);
+		enemies.Add (boat1);
+		Enemy boat2 = new Enemy ("boat2", allEnemyPaths[1]);
+		midground.AddChild (boat2);
+		enemies.Add (boat2);
+		Enemy boat3 = new Enemy ("sub1", allEnemyPaths[2]);
+		midground.AddChild (boat3);
+		enemies.Add (boat3);
+		Enemy boat4 = new Enemy ("sub2", allEnemyPaths[3]);
+		midground.AddChild (boat4);
+		enemies.Add (boat4);
+		Enemy boat5 = new Enemy ("sub1", allEnemyPaths[4]);
+		midground.AddChild (boat5);
+		enemies.Add (boat5);
 	}
 
 

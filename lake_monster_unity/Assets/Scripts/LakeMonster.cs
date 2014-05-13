@@ -120,7 +120,9 @@ public class LakeMonster : MonoBehaviour
 		lake.startLevel(level);
 		
 		lake.y = lake.rootHeight/2 - Futile.screen.halfHeight - 200;
+
 //		lake.y = Futile.screen.halfHeight - lake.rootHeight/2;
+
 		Futile.stage.AddChild(lake);
 		lake.MoveToBack();
 		
